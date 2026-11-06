@@ -1,0 +1,21 @@
+<svg width="320" height="680" viewBox="0 0 320 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2289_6464)">
+<rect width="320" height="680" fill="url(#paint0_linear_2289_6464)"/>
+<rect opacity="0.3" x="160.148" y="-69.1484" width="1018.65" height="1018.65" transform="rotate(45 160.148 -69.1484)" fill="white"/>
+<rect opacity="0.3" x="160.148" y="131.931" width="734.284" height="734.284" transform="rotate(45 160.148 131.931)" fill="white"/>
+<rect opacity="0.3" x="160.148" y="70.8472" width="820.67" height="820.67" transform="rotate(45 160.148 70.8472)" fill="white"/>
+<rect opacity="0.3" x="160.148" width="920.863" height="920.863" transform="rotate(45 160.148 0)" fill="white"/>
+<rect opacity="0.3" x="160.465" y="234.221" width="589.182" height="589.182" transform="rotate(45 160.465 234.221)" fill="white"/>
+<rect opacity="0.3" x="160.148" y="308.686" width="481.711" height="481.711" transform="rotate(45 160.148 308.686)" fill="white"/>
+<rect opacity="0.3" x="160.152" y="392.709" width="362.884" height="362.884" transform="rotate(45 160.152 392.709)" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_2289_6464" x1="160" y1="0" x2="160" y2="680" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B1D3D6"/>
+<stop offset="1" stop-color="#BCBCBC"/>
+</linearGradient>
+<clipPath id="clip0_2289_6464">
+<rect width="320" height="680" fill="white"/>
+</clipPath>
+</defs>
+</svg>

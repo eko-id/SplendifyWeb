@@ -1,0 +1,22 @@
+.explanator {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100svw;
+    padding: 50px 100px;
+    justify-content: center;
+    margin: auto;
+    background: white;
+}
+@media screen and (max-width: 768px) {
+    section {
+        padding: 16px;
+    }
+}

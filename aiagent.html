@@ -1,408 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversion Tech® AI Agent</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
-</head>
-<style>
-    * {
-        box-sizing: border-box;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conversion Tech® AI Agent</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
+        <link rel="stylesheet" href="colors.css">
+        <link rel="stylesheet" href="text.css">
+        <link rel="stylesheet" href="layout.css">
+    </head>
+    <style>
+        img,
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 
-    h1,
-    h2,
-    p {
-        margin: 0;
-    }
-
-    body {
-        font-family: 'Roboto';
-        margin: 0;
-        padding: 0;
-        line-height: 1.5;
-        width: 100%;
-        background: #fafafa;
-        overflow-x: hidden;
-    }
-
-    img,
-    video {
-        max-width: 100%;
-        height: auto;
-    }
-</style>
-
-<body>
-    <header>
-        <div class="menu-bar" id="products-menu-bar">
-            <p class="menu title">Products</p>
-            <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
-            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
-            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
-        </div>
-        <img src="splendify.svg" alt="splendify" id="header-logo">
-        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
-            <p class="menu title">PAGES</p>
-            <a class="menu" id="menu-about" href="about.html">About Splendify</a>
-            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
-        </div>
+    <body>
+        <div id="hero"></div>
         <style>
-            header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                display: flex;
-                flex-direction: row;
-                align-items: start;
-                justify-content: space-between;
-                width: 100%;
-                padding: 25px 50px;
-                box-sizing: border-box;
-                /* Mencegah overflow horizontal */
-                z-index: 100;
-            }
-
-            .menu {
-                display: none;
-                flex-direction: row;
-                align-items: center;
-                background-color: rgba(255, 255, 255, 0.5);
-                width: fit-content;
-                height: fit-content;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-radius: 100px;
-                padding: 10px 20px;
-                letter-spacing: 1px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: #000;
-            }
-
-            .menu:hover {
-                background-color: rgba(255, 255, 255, 1);
-                font-weight: 600;
-            }
-
-            .menu p {
-                margin: 0;
-            }
-
-            .title {
-                display: flex;
-            }
-
-            .menu-bar {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-
-            #header-logo {
-                padding: 10px 20px;
-                background: white;
-                border-radius: 100px;
-                height: 40px;
-                position: fixed;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            @media screen and (max-width: 1000px) {
-                header {
-                    display: none;
-                }
-            }
-        </style>
-        <script>
-            const productsMenuBar = document.getElementById('products-menu-bar');
-            const pagesMenuBar = document.getElementById('pages-menu-bar');
-            const headerLogo = document.getElementById('header-logo');
-
-            productsMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-skin').style.display = 'flex';
-                document.getElementById('menu-agent').style.display = 'flex';
-                document.getElementById('menu-platform').style.display = 'flex';
-            });
-
-            productsMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-skin').style.display = 'none';
-                document.getElementById('menu-agent').style.display = 'none';
-                document.getElementById('menu-platform').style.display = 'none';
-            });
-
-            pagesMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-about').style.display = 'flex';
-                document.getElementById('menu-privacy').style.display = 'flex';
-            });
-
-            pagesMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-about').style.display = 'none';
-                document.getElementById('menu-privacy').style.display = 'none';
-            });
-
-            headerLogo.addEventListener('click', () => {
-                window.location.href = 'index.html';
-            });
-        </script>
-    </header>
-
-    <section id="hero">
-        <div id="hero-text">
-            <h1>Conversion Tech® <br class="mobile-break"> AI Agent</h1>
-            <p>An intelligent ecosystem built to autonomously nurture, engage, and convert raw leads into verified
-                customers 24/7.</p>
-        </div>
-        <style>
-            #hero {
-                width: 100%;
-                min-height: 70vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: 120px 20px 60px 20px;
-                background-image: url(lines.jpg);
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-                text-align: center;
-            }
-
+            #hero p,
             #hero h1 {
-                font-size: 32px;
-                font-weight: 300;
-                line-height: 120%;
+                color: black;
+            }
+            #hero-icon {
+                display: none;
+                height: 100px;
                 margin-bottom: 20px;
             }
-
-            #hero p {
-                font-size: 16px;
-                font-weight: 300;
-                max-width: 600px;
-                color: #444;
+            #hero-background {
+                scale: 0.4;
+                opacity: 0.1;
             }
-
-            .mobile-break {
-                display: block;
-            }
-
-            @media screen and (min-width: 768px) {
-                #hero {
-                    min-height: 80vh;
-                    padding: 140px 10% 80px 10%;
-                }
-
-                #hero h1 {
-                    font-size: 52px;
-                }
-
-                #hero p {
-                    font-size: 20px;
-                }
-
-                .mobile-break {
-                    display: none;
-                }
-            }
-
-            @media screen and (min-width: 1024px) {
-                #hero h1 {
-                    font-size: 64px;
-                }
-
-                #hero p {
-                    font-size: 24px;
-                    max-width: 800px;
+            @media screen and (max-width: 600px) {
+                #hero-background {
+                    scale: 1;
                 }
             }
         </style>
-    </section>
-
-    <section class="explanation">
-        <div class="explanation-intro">
-            <p class="intro-label">Benefits</p>
-            <h2 class="intro-title">Truly intelligent. A business AI Agent</h2>
-            <p class="explanation-description">Conversion Tech® AI Agent will help businesses to manage customers and
-                increase the ROI</p>
-        </div>
-        <div class="slider">
-            <div class="slider-cell">
-                <div class="slider-box">
-                    <img src="roi.svg" alt="" class="cell-image">
-                    <div class="box-text-wrap">
-                        <p class="box-text">Increase marketing ROI up to</p>
-                        <p class="box-number">12x</p>
+        <section class="explanation">
+            <div id="explanator-benefits"></div>
+            <div class="slider">
+                <div class="slider-cell">
+                    <div class="slider-box">
+                        <img src="roi.svg" alt="" class="cell-image">
+                        <div class="box-text-wrap">
+                            <p class="box-text">Increase marketing ROI up to</p>
+                            <p class="box-number">12x</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-wrap">
+                        <p class="slider-text">Increase marketing Return of Investment by 8X-12X</p>
                     </div>
                 </div>
-                <div class="slider-text-wrap">
-                    <p class="slider-text">Increase marketing Return of Investment by 8X-12X</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <div class="slider-box">
-                    <img src="form.svg" alt="" class="cell-image">
-                    <div class="box-text-wrap">
-                        <p class="box-text">Efficient Registration</p>
-                        <p class="box-number">85%</p>
+                <div class="slider-cell">
+                    <div class="slider-box">
+                        <img src="form.svg" alt="" class="cell-image">
+                        <div class="box-text-wrap">
+                            <p class="box-text">Efficient Registration</p>
+                            <p class="box-number">85%</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-wrap">
+                        <p class="slider-text">Reduce manual registration by up to 85%</p>
                     </div>
                 </div>
-                <div class="slider-text-wrap">
-                    <p class="slider-text">Reduce manual registration by up to 85%</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <div class="slider-box">
-                    <img src="server.svg" alt="" class="cell-image">
-                    <div class="box-text-wrap">
-                        <p class="box-text">CRM</p>
-                        <p class="box-number">AUTO SYNC</p>
+                <div class="slider-cell">
+                    <div class="slider-box">
+                        <img src="server.svg" alt="" class="cell-image">
+                        <div class="box-text-wrap">
+                            <p class="box-text">CRM</p>
+                            <p class="box-number">AUTO SYNC</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-wrap">
+                        <p class="slider-text">All customer details will be sync automatically into your CRM</p>
                     </div>
                 </div>
-                <div class="slider-text-wrap">
-                    <p class="slider-text">All customer details will be sync automatically into your CRM</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <div class="slider-box">
-                    <img src="customer.svg" alt="" class="cell-image">
-                    <div class="box-text-wrap">
-                        <p class="box-text">Leads to Customer Conversion</p>
-                        <p class="box-number">25%</p>
+                <div class="slider-cell">
+                    <div class="slider-box">
+                        <img src="customer.svg" alt="" class="cell-image">
+                        <div class="box-text-wrap">
+                            <p class="box-text">Leads to Customer Conversion</p>
+                            <p class="box-number">25%</p>
+                        </div>
+                    </div>
+                    <div class="slider-text-wrap">
+                        <p class="slider-text">Increase in conversion from leads to customer better than human's conversion
+                        </p>
                     </div>
                 </div>
-                <div class="slider-text-wrap">
-                    <p class="slider-text">Increase in conversion from leads to customer better than human's conversion
-                    </p>
-                </div>
             </div>
-        </div>
-        </div>
-        <style>
-            .explanation {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .explanation-intro {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 5px;
-                margin: 0 auto;
-            }
-
-            .intro-label {
-                font-weight: 500;
-                font-size: 11px;
-                letter-spacing: 0.15em;
-                color: #35C0A7;
-                text-transform: uppercase;
-            }
-
-            .intro-title {
-                font-size: 28px;
-                line-height: 120%;
-                font-weight: 300;
-            }
-
-            .explanation-description {
-                padding-top: 10px;
-                font-size: 16px;
-                color: #666;
-                line-height: 150%;
-                font-weight: 300;
-            }
-
-            .slider {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-                overflow-x: scroll;
-                margin: 0 auto;
-            }
-
-            .slider-cell {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                min-width: 280px;
-                scroll-snap-align: start;
-                max-width: 300px;
-            }
-
-            .slider-box {
-                height: 280px;
-                width: 100%;
-                background-color: #F4F4F4;
-                border-radius: 20px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: space-between;
-                padding: 24px;
-            }
-
-            .cell-image {
-                width: 100px;
-                height: 100px;
-            }
-
-            .slider-text-wrap {
-                padding: 0 25px;
-            }
-
-            .slider-text {
-                font-size: 14px;
-                line-height: 150%;
-                opacity: 0.5;
-            }
-
-            .box-text {
-                font-weight: 300;
-                font-size: 16px;
-                margin-bottom: 5px;
-            }
-
-            .box-number {
-                font-style: italic;
-                font-weight: 900;
-                font-size: 38px;
-                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                line-height: 110%;
-            }
-            @media screen and (max-width: 800px) {
+            </div>
+            <style>
                 .slider {
-                    padding: 0px 50px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                    overflow-x: scroll;
+                    margin: 0 auto;
+                }
+
+                .slider-cell {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    min-width: 280px;
+                    scroll-snap-align: start;
+                    max-width: 300px;
+                }
+
+                .slider-box {
+                    height: 280px;
                     width: 100%;
+                    background-color: #f4f4f4;
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    padding: 24px;
                 }
-                .explanation-intro {
-                    padding: 0px 50px;
+
+                .cell-image {
+                    width: 100px;
+                    height: 100px;
                 }
-            }
-        </style>
-        </div>
+
+                .slider-text-wrap {
+                    padding: 0 25px;
+                }
+
+                .slider-text {
+                    font-size: 14px;
+                    line-height: 150%;
+                    opacity: 0.5;
+                }
+
+                .box-text {
+                    font-weight: 300;
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                }
+
+                .box-number {
+                    font-style: italic;
+                    font-weight: 900;
+                    font-size: 38px;
+                    background: linear-gradient(111.83deg, #35c0a7 28.6%, #5bd9bb 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    line-height: 110%;
+                }
+                @media screen and (max-width: 800px) {
+                    .slider {
+                        width: 100%;
+                        flex-direction: column;
+                    }
+                    .explanation-intro {
+                        padding: 0px 50px;
+                    }
+                }
+            </style>
+            </div>
+        </section>
 
         <section id="labels">
-            <h2>Conversion Tech® AI Agent <br class="mobile-break"> is customized for</h2>
+            <div id="customized"></div>    
             <div class="labels-container">
                 <div class="labels-track">
                     <div class="labels-wrap">
@@ -440,22 +210,6 @@
                 </div>
             </div>
             <style>
-                #labels {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 25px;
-                    padding: 60px 0;
-                    width: 100%;
-                }
-
-                #labels h2 {
-                    font-size: 24px;
-                    font-weight: 300;
-                    text-align: center;
-                    padding: 0 20px;
-                    line-height: 130%;
-                }
-
                 .labels-container {
                     width: 100%;
                     overflow: hidden;
@@ -480,17 +234,6 @@
                     animation-play-state: paused;
                 }
 
-                .label {
-                    width: fit-content;
-                    text-wrap: nowrap;
-                    padding: 10px 20px;
-                    background-color: #f4f4f4;
-                    border-radius: 100px;
-                    font-size: 14px;
-                    color: #555;
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-                }
-
                 @keyframes scroll-left {
                     0% {
                         transform: translateX(0);
@@ -502,14 +245,6 @@
                 }
 
                 @media screen and (min-width: 768px) {
-                    #labels {
-                        padding: 80px 0;
-                    }
-
-                    #labels h2 {
-                        font-size: 32px;
-                    }
-
                     .label {
                         font-size: 16px;
                     }
@@ -518,38 +253,33 @@
         </section>
 
         <section class="explanation">
-            <div class="explanation-intro">
-                <p class="intro-label">Digital Concierge</p>
-                <h2 class="intro-title">Handle each customer responsively and personalized</h2>
-                <p class="explanation-description">Conversion Tech® AI Agent will also help businesses by responding
-                    chat from customer and follow-up customer’s interest</p>
-            </div>
-                <div class="slider image-slider">
-                    <div class="slider-cell row-cell">
-                        <div class="img-wrapper">
-                            <img src="leads.jpg" alt="" class="slider-image">
-                        </div>
-                        <div class="slider-text-wrap">
-                            <p class="slider-text">Convert your leads to customer within 2 minutes</p>
-                        </div>
+            <div id="explanator-conversion"></div>
+            <div class="slider-image slider">
+                <div class="slider-cell row-cell">
+                    <div class="img-wrapper">
+                        <img src="leads.jpg" alt="" class="slider-image">
                     </div>
-                    <div class="slider-cell row-cell">
-                        <div class="img-wrapper">
-                            <img src="appointment.jpg" alt="" class="slider-image">
-                        </div>
-                        <div class="slider-text-wrap">
-                            <p class="slider-text">Confirm customer appointment automatically</p>
-                        </div>
-                    </div>
-                    <div class="slider-cell row-cell">
-                        <div class="img-wrapper">
-                            <img src="followup.jpg" alt="" class="slider-image">
-                        </div>
-                        <div class="slider-text-wrap">
-                            <p class="slider-text">Avoid losing leads & customer due to poor follow-up</p>
-                        </div>
+                    <div class="slider-text-wrap">
+                        <p class="slider-text">Convert your leads to customer within 2 minutes</p>
                     </div>
                 </div>
+                <div class="slider-cell row-cell">
+                    <div class="img-wrapper">
+                        <img src="appointment.jpg" alt="" class="slider-image">
+                    </div>
+                    <div class="slider-text-wrap">
+                        <p class="slider-text">Confirm customer appointment automatically</p>
+                    </div>
+                </div>
+                <div class="slider-cell row-cell">
+                    <div class="img-wrapper">
+                        <img src="followup.jpg" alt="" class="slider-image">
+                    </div>
+                    <div class="slider-text-wrap">
+                        <p class="slider-text">Avoid losing leads & customer due to poor follow-up</p>
+                    </div>
+                </div>
+            </div>
             <style>
                 .img-wrapper {
                     width: 100%;
@@ -566,348 +296,133 @@
             </style>
         </section>
 
-        <section id="contact">
-            <div class="video-container">
-                <video src="aiagent.mp4" autoplay loop muted></video>
-            </div>
-            <div class="contact-text">
-                <h2>Ready to implement Splendify AI?</h2>
-                <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing
-                    our personalized AI technology</p>
-                <button class="contact-button" type="button" onclick="window.location.href='wellness.html'">Book Free Consultation</button>
-            </div>
-            <style>
-                #contact {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
-                }
+        <!-- Container Komponen -->
 
-                .video-container {
-                    width: 100%;
-                    max-width: 340px;
-                    aspect-ratio: 1/1;
-                    margin-bottom: 20px;
-                }
+        <div id="cta-container"></div>
+        <div id="footer-container"></div>
+        <div id="navbar-container"></div>
 
-                #contact video {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 20px;
-                }
-
-                .contact-text {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                    text-align: center;
-                    width: 100%;
-                    max-width: 500px;
-                }
-
-                .contact-text p {
-                    line-height: 150%;
-                    font-size: 15px;
-                    font-weight: 300;
-                    color: #555;
-                }
-
-                .contact-text h2 {
-                    font-size: 26px;
-                    font-weight: 300;
-                    line-height: 130%;
-                }
-
-                .contact-button {
-                    display: inline-flex;
-                    align-self: center;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 12px 28px;
-                    background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                    border-radius: 96px;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 15px;
-                    border: none;
-                    cursor: pointer;
-                    box-shadow: 0 4px 15px rgba(53, 192, 167, 0.2);
-                    transition: transform 0.2s;
-                }
-
-                .contact-button:hover {
-                    transform: scale(1.02);
-                }
-
-                @media screen and (min-width: 768px) {
-                    #contact {
-                        padding: 60px 40px;
-                    }
-
-                    .contact-text h2 {
-                        font-size: 36px;
-                    }
-
-                    .contact-text p {
-                        font-size: 18px;
-                    }
-
-                    .video-container {
-                        max-width: 400px;
-                    }
-                }
-
-                @media screen and (min-width: 1024px) {
-                    #contact {
-                        flex-direction: row;
-                        gap: 60px;
-                        padding: 80px 15%;
-                    }
-
-                    .video-container {
-                        max-width: 450px;
-                        margin-bottom: 0;
-                    }
-
-                    .contact-text {
-                        text-align: left;
-                        max-width: 50%;
-                    }
-
-                    .contact-button {
-                        align-self: flex-start;
-                    }
-                }
-            </style>
-        </section>
-
-        <section id="footer">
-            <div class="footer-brand">
-                <img src="splendify.svg" alt="splendify" class="footer-logo">
-            </div>
-            <div id="footer-menus">
-                <div class="footer-menu-list">
-                    <p class="footer-menu-title">Products</p>
-                    <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
-                    <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                    <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
-                </div>
-                <div class="footer-menu-list">
-                    <p class="footer-menu-title">More</p>
-                    <a class="footer-menu" href="about.html">About Splendify</a>
-                    <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
-                </div>
-                <div class="footer-menu-list">
-                    <p class="footer-menu-title">Socials</p>
-                    <a class="footer-menu" target="_blank" href="https://sg.linkedin.com/company/splendify-pte-ltd">LinkedIn</a>
-                    <a class="footer-menu" target="_blank" href="https://www.instagram.com/splendify_sg/">Instagram</a>
-                </div>
-            </div>
-            <style>
-                #footer {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 40px;
-                    width: 100%;
-                }
-
-                .footer-logo {
-                    max-width: 140px;
-                }
-
-                #footer-menus {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 30px;
-                    width: 100%;
-                }
-
-                .footer-menu-list {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                }
-
-                .footer-menu {
-                    color: #00000080;
-                    margin: 0;
-                    font-size: 13px;
-                    text-decoration: none;
-                    transition: color 0.2s;
-                }
-
-                .footer-menu:hover {
-                    color: #000;
-                }
-
-                .footer-menu-title {
-                    font-size: 12px;
-                    font-weight: 700;
-                    letter-spacing: 0.1em;
-                    text-transform: uppercase;
-                    color: #000;
-                    margin-bottom: 5px;
-                }
-
-                @media screen and (min-width: 768px) {
-                    #footer {
-                        padding: 60px 10%;
-                    }
-
-                    #footer-menus {
-                        gap: 40px;
-                    }
-                }
-
-                @media screen and (min-width: 1024px) {
-                    #footer {
-                        flex-direction: row;
-                        justify-content: space-between;
-                        align-items: start;
-                        padding: 80px 15%;
-                    }
-
-                    #footer-menus {
-                        display: flex;
-                        flex-direction: row;
-                        gap: 60px;
-                        width: auto;
-                    }
-
-                    .footer-logo {
-                        max-width: 180px;
-                    }
-                }
-            </style>
-        </section>
-        <section id="nav-sidebar">
-        <div id="nav-sidebar-header">
-            <img src="splendify.svg" alt="splendify" class="nav-sidebar-logo">
-            <img src="close.svg" alt="close" id="close">
-        </div>
-        <div id="nav-sidebar-menus">
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Products</a>
-                <a class="nav-sidebar-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="nav-sidebar-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                <a class="nav-sidebar-menu" href="fabulas.html">Wellness Platform</a>
-            </div>
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Pages</a>
-                <a class="nav-sidebar-menu" href="about.html">About Splendify</a>
-                <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
-            </div>
-        </div>
-        <style>
-            #nav-sidebar {
-                display: none;
-                flex-direction: column;
-                gap: 100px;
-                align-items: start;
-                padding: 20px 40px;
-                width: 100svw;
-                height: 100svh;
-                background-color: rgba(255, 255, 255, 0.75);
-                position: fixed;
-                top: 0;
-                z-index: 100;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-            }
-
-            #nav-sidebar-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-
-            .nav-sidebar-logo {
-                height: 20px;
-            }
-
-            #nav-sidebar-menus {
-                display: flex;
-                flex-direction: column;
-                gap: 150px;
-            }
-
-            .nav-sidebar-menu-list {
-                display: flex;
-                flex-direction: column;
-                gap: 50px;
-            }
-
-            .nav-sidebar-menu {
-                color: #00000080;
-                margin: 0;
-                font-size: 16px;
-                text-decoration: none;
-            }
-
-            .menu-label {
-                font-size: 16px;
-                letter-spacing: 15%;
-                text-transform: uppercase;
-            }
-        </style>
-    </section>
-    <section id="nav-mobile">
-        <img src="splendify.svg" alt="" class="logo">
-        <img src="menu.svg" alt="menu" id="menu">
-        <style>
-            .logo {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #menu {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #nav-mobile {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                width: 100%;
-                position: fixed;
-                top: 0;
-                z-index: 10;
-            }
-            @media screen and (min-width: 1000px) {
-                #nav-mobile {
-                    display: none;
-                }
-            }
-        </style>
         <script>
-            const menu = document.getElementById('menu');
-            const sidebar = document.getElementById('nav-sidebar');
-            const close = document.getElementById('close');
+            // Fungsi sederhana untuk menyisipkan HTML
+            function loadComponent(targetId, filePath, data = {}) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((html) => {
+                        const container = document.getElementById(targetId);
+                        if (!container) return;
 
-            menu.addEventListener('click', () => {
-                sidebar.style.display = 'flex';
+                        container.innerHTML = html;
+
+                        // Loop untuk mengubah isi teks atau atribut berdasarkan ID
+                        Object.keys(data).forEach((id) => {
+                            const element = container.querySelector(`#${id}`);
+                            if (element) {
+                                const value = data[id];
+
+                                // Jika value berbentuk objek (misal untuk ganti src/alt/href gambar)
+                                if (typeof value === "object" && value !== null) {
+                                    Object.keys(value).forEach((attr) => {
+                                        element[attr] = value[attr]; // Contoh: element.src = '...'
+                                    });
+                                } else {
+                                    // Jika value berupa string biasa, ubah textContent
+                                    element.textContent = value;
+                                }
+                            }
+                        });
+                    })
+                    .catch((err) =>
+                        console.error(`Gagal memuat komponen ${filePath}:`, err),
+                    );
+            }
+
+            // Panggil komponen
+            loadComponent("cta-container", "reusable/cta.html");
+            loadComponent("footer-container", "reusable/footer.html");
+            function loadNav(targetId, filePath) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((data) => {
+                        // 1. Suntikkan HTML ke dalam container
+                        document.getElementById(targetId).innerHTML = data;
+
+                        // 2. Ambil elemen-elemen untuk menu mobile
+                        const iconMenu = document.getElementById("icon-menu");
+                        const iconClose = document.getElementById("icon-close");
+                        const expanded = document.getElementById("expanded");
+                        const collapsed = document.getElementById("collapsed");
+
+                        // 3. Ambil elemen navbar desktop dan mobile untuk efek scroll
+                        const desktopNav = document.getElementById("navbar");
+                        const mobileNav = document.getElementById("mobile-nav");
+
+                        // --- A. LOGIKA TRIGGER MENU MOBILE ---
+                        if (iconMenu && iconClose) {
+                            iconMenu.addEventListener("click", () => {
+                                expanded.style.display = "flex";
+                                collapsed.style.display = "none";
+                            });
+                            iconClose.addEventListener("click", () => {
+                                expanded.style.display = "none";
+                                collapsed.style.display = "flex";
+                            });
+                        }
+
+                        // --- B. LOGIKA BACKGROUND SCROLL ---
+                        function checkScroll() {
+                            if (window.scrollY > 50) {
+                                if (desktopNav) desktopNav.classList.add("scrolled");
+                                if (mobileNav) mobileNav.classList.add("scrolled");
+                            } else {
+                                if (desktopNav) desktopNav.classList.remove("scrolled");
+                                if (mobileNav) mobileNav.classList.remove("scrolled");
+                            }
+                        }
+
+                        // Jalankan saat pengguna melakukan scroll
+                        window.addEventListener("scroll", checkScroll);
+
+                        // Jalankan sekali saat halaman pertama kali dimuat (jika halaman di-refresh di posisi tengah)
+                        checkScroll();
+                    })
+                    .catch((err) => console.error("Gagal memuat navbar:", err));
+            }
+
+            // Panggil fungsi seperti biasa
+            loadNav("navbar-container", "reusable/navbar.html");
+            loadComponent("hero", "reusable/hero.html", {
+                "hero-label": "Splendify AI",
+                "hero-title": "Conversion Tech® AI Agent",
+                "hero-description":
+                    "An intelligent ecosystem built to autonomously nurture, engage, and convert raw leads into verified customers 24/7",
+                // Mengubah src gambar hero-background
+                "hero-background": {
+                    src: "../backgrounds/orb.svg",
+                    alt: "Hero Background", // opsional
+                },
+                "hero-icon": {
+                    src: "../backgrounds/orb.svg",
+                    alt: "Splendify AI", // opsional
+                },
             });
-
-            close.addEventListener('click', () => {
-                sidebar.style.display = 'none';
+            loadComponent("explanator-benefits", "reusable/explanator.html", {
+                "explanator-label": "Benefits",
+                "explanator-title": "Truly intelligent. A business AI Agent",
+                "explanator-description":
+                    "Conversion Tech® AI Agent will help businesses to manage customers and increase the ROI",
             });
-
+            loadComponent("customized", "reusable/explanator.html", {
+                "explanator-label": " ",
+                "explanator-title": "Conversion Tech® AI Agent is customized for",
+                "explanator-description": " ",
+            });
+            loadComponent("explanator-conversion", "reusable/explanator.html", {
+                "explanator-label": "Digital Concierge",
+                "explanator-title": "Handle each customer responsively and personalized",
+                "explanator-description":
+                    "Conversion Tech® AI Agent will also help businesses by responding chat from customer and follow-up customer’s interest",
+            });
         </script>
-    </section>
-</body>
+    </body>
 
 </html>

@@ -1,0 +1,87 @@
+<section id="footer">
+    <div class="footer-menu-list">
+        <img src="../splendify.svg" alt="splendify" class="footer-logo">
+        <p class="body-1 footer-subtitle">Wellness, beauty, and technology<br>brought into harmony.</p>
+    </div>
+    <div class="footer-menu-list">
+        <p class="footer-menu-title">Products</p>
+        <a class="footer-menu body-2" href="../aiskin.html" target="_parent">AI Skin Analysis</a>
+        <a class="footer-menu body-2" href="../aiagent.html" target="_parent">Conversion Tech® AI Agent</a>
+        <a class="footer-menu body-2" href="../fabulas.html" target="_parent">Wellness Platform</a>
+    </div>
+    <div class="footer-menu-list">
+        <p class="footer-menu-title">More</p>
+        <a class="footer-menu body-2" href="../about.html" target="_parent">About Splendify</a>
+        <a class="footer-menu body-2" href="../privacy-policy.html" target="_parent">Privacy Policy</a>
+        <a class="footer-menu body-2" href="../quickwin.html" target="_parent">IMDA Quickwin Programme</a>
+        <a class="footer-menu body-2" href="../contact.html" target="_parent">Contact us</a>
+    </div>
+    <div class="footer-menu-list">
+        <p class="footer-menu-title">Socials</p>
+        <a class="footer-menu body-2" target="_parent" href="https://sg.linkedin.com/company/splendify-pte-ltd"><img class="footer-icon" src="../icons/linkedin.svg" alt="linkedin"> LinkedIn</a>
+        <a class="footer-menu body-2" target="_parent" href="https://www.instagram.com/splendify_sg/"><img class="footer-icon" src="../icons/instagram.svg" alt="instagram"> Instagram</a>
+    </div>
+</section>
+<style>
+    #footer {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+        width: 100%;
+        background-color: white;
+        z-index: 10;
+        gap: 50px;
+    }
+
+    .footer-logo {
+        max-width: 200px;
+        margin-left: 15px;
+    }
+
+    .footer-subtitle {
+        margin-left: 15px;
+    }
+
+    .footer-menu-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .footer-menu-title {
+        margin-left: 15px;
+        letter-spacing: 2px;
+    }
+    .footer-menu {
+        color: black;
+        margin: 0;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 15px;
+        width: fit-content;
+    }
+    .footer-menu:hover {
+        background-color: var(--green20);
+    }
+    .footer-icon {
+        width: 15px;
+        aspect-ratio: 1/1;
+    }
+
+    .footer-menu-title {
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 900px) {
+        #footer {
+            flex-direction: column;
+            align-items: start;
+            gap: 50px;
+            padding: 20px 10px;
+        }
+    }
+</style>

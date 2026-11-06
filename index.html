@@ -1,907 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Splendify</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Splendify</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        >
+        <link rel="stylesheet" href="text.css">
+        <link rel="stylesheet" href="colors.css">
+        <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
+        <link rel="stylesheet" href="colors.css">
+        <link rel="stylesheet" href="text.css">
+        <link rel="stylesheet" href="layout.css">
+    </head>
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    p {
-        margin: 0;
-        line-height: 150%;
-    }
-
-    body {
-        margin: 0;
-        font-family: 'Roboto';
-        display: flex;
-        flex-direction: column;
-        background: #fafafa;
-        overflow-x: hidden;
-        width: 100%;
-    }
-
-    h1 {
-        margin: 0;
-        font-size: 56px;
-        line-height: 150%;
-        font-weight: 300;
-    }
-
-    h2 {
-        margin: 0;
-        font-size: 24px;
-        line-height: 150%;
-        font-weight: 300;
-    }
-</style>
-
-<body>
-    <img src="linebg.svg" alt="background" id="background"
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -99; opacity: 0.8;">
-
-    <header>
-        <div class="menu-bar" id="products-menu-bar">
-            <p class="menu title">Products</p>
-            <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
-            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
-            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
-        </div>
-        <img src="splendify.svg" alt="splendify" id="header-logo">
-        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
-            <p class="menu title">PAGES</p>
-            <a class="menu" id="menu-about" href="about.html">About Splendify</a>
-            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
-        </div>
-        <style>
-            header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                display: flex;
-                flex-direction: row;
-                align-items: start;
-                justify-content: space-between;
-                width: 100%;
-                padding: 25px 50px;
-                box-sizing: border-box;
-                /* Mencegah overflow horizontal */
-                z-index: 100;
-            }
-
-            .menu {
-                display: none;
-                flex-direction: row;
-                align-items: center;
-                background-color: rgba(255, 255, 255, 0.5);
-                width: fit-content;
-                height: fit-content;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-radius: 100px;
-                padding: 10px 20px;
-                letter-spacing: 1px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: #000;
-            }
-
-            .menu:hover {
-                background-color: rgba(255, 255, 255, 1);
-                font-weight: 600;
-            }
-
-            .menu p {
-                margin: 0;
-            }
-
-            .title {
-                display: flex;
-            }
-
-            .menu-bar {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-
-            #header-logo {
-                padding: 10px 20px;
-                background: white;
-                border-radius: 100px;
-                height: 40px;
-                position: fixed;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            @media screen and (max-width: 1000px) {
-                header {
-                    display: none;
-                }
-            }
-        </style>
-        <script>
-            const productsMenuBar = document.getElementById('products-menu-bar');
-            const pagesMenuBar = document.getElementById('pages-menu-bar');
-            const headerLogo = document.getElementById('header-logo');
-
-            productsMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-skin').style.display = 'flex';
-                document.getElementById('menu-agent').style.display = 'flex';
-                document.getElementById('menu-platform').style.display = 'flex';
-            });
-
-            productsMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-skin').style.display = 'none';
-                document.getElementById('menu-agent').style.display = 'none';
-                document.getElementById('menu-platform').style.display = 'none';
-            });
-
-            pagesMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-about').style.display = 'flex';
-                document.getElementById('menu-privacy').style.display = 'flex';
-            });
-
-            pagesMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-about').style.display = 'none';
-                document.getElementById('menu-privacy').style.display = 'none';
-            });
-
-            headerLogo.addEventListener('click', () => {
-                window.location.href = 'index.html';
-            });
-        </script>
-    </header>
-    
-
-    <div id="hero">
-        <div class="subtitle">
-            <h1>A harmony of wellness, <br> beauty, and technology <br> in the most innovative <br> way possible.</h1>
-            <p>Start delivering sophisticated experience <br> to your customer and increase efficiency <br>by
-                implementing personalized AI technology</p>
-            <div id="quickwin-banner" onclick="window.location.href='wellness.html'">
+    <body>
+        <div id="hero"></div>
+        <div id="quickwin-banner" onclick="window.location.href='quickwin.html'">
+            <img src="icons/imda.svg" alt="" id="imda-logo">
+            <div class="quickwin-text">
                 <p id="quickwin-title">Singpore SME and Non-SME/LLE Grant Available - up to $16,000</p>
                 <p id="quickwin-description">Eligible SMEs with 30%+ Singaporean shareholding. Ask us how to apply!</p>
-                <style>
+            </div>
+            <div class="quickwin-button">Read More<img src="icons/arrow-right.svg" alt=""></div>
+            <style>
+                #quickwin-banner {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 50px;
+                    padding: 20px;
+                    background: radial-gradient(
+                        90.67% 475.63% at 90.67% 50%,
+                        #003357 0%,
+                        #00d7b0 100%
+                    );
+                    color: white;
+                    cursor: pointer;
+                    width: 100svw;
+                }
+                #imda-logo {
+                    height: 40px;
+                    filter: saturate(0%) brightness(1000%);
+                }
+                .quickwin-text {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                }
+                #quickwin-title {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                #quickwin-description {
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+                .quickwin-button {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 5px 20px;
+                    border: 1px solid white;
+                    border-radius: 100px;
+                    cursor: pointer;
+                }
+                .quickwin-button img {
+                    filter: invert(100%);
+                    width: 15px;
+                }
+                @media screen and (max-width: 1000px) {
                     #quickwin-banner {
-                        display: flex;
                         flex-direction: column;
-                        padding: 50px 20px;
-                        background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                        border-radius: 20px;
-                        color: white;
-                        cursor: pointer;
+                        align-items: center;
+                        text-align: center;
+                        gap: 10px;
                     }
-
-                    #quickwin-title {
-                        font-size: 18px;
-                        font-weight: 500;
+                    #imda-logo {
+                        margin-right: 0;
+                        margin-bottom: 10px;
                     }
-
-                    #quickwin-description {
-                        font-size: 14px;
-                        font-style: italic;
-                    }
-                </style>
-            </div>                
-        </div>
-        <style>
-            #hero {
-                width: 100%;
-                min-height: 100vh;
-                padding: 120px 20px 60px 20px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                background: url('fractal.jpg') no-repeat center top;
-                background-size: 100% 100%;
-                text-align: center;
-            }
-
-            .subtitle {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                width: 100%;
-                max-width: 800px;
-                margin: 0 auto;
-            }
-
-            .subtitle p {
-                font-size: 24px;
-                line-height: 150%;
-                font-weight: 300;
-            }
-        </style>
-    </div>
-
-    <div class="clients-container">
-        <div class="clients-track">
-            <!-- Set 1 -->
-            <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
-            <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
-            <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
-            <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
-            <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
-            <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
-            <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
-            <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
-            <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
-            <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
-            <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
-            <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
-            <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
-            <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
-            <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
-            <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
-            <!-- Set 2 -->
-            <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
-            <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
-            <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
-            <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
-            <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
-            <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
-            <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
-            <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
-            <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
-            <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
-            <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
-            <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
-            <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
-            <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
-            <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
-            <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
-        </div>
-        <style>
-            .clients-container {
-                width: 100%;
-                overflow: hidden;
-                padding: 20px 0;
-                background: #fafafa;
-            }
-
-            .clients-track {
-                display: flex;
-                align-items: center;
-                gap: 30px;
-                width: max-content;
-                animation: scroll-left 25s linear infinite;
-                filter: grayscale(100%);
-            }
-
-            .client-logo img {
-                max-width: 120px;
-                max-height: 80px;
-                object-fit: contain;
-            }
-
-            @keyframes scroll-left {
-                0% {
-                    transform: translateX(0);
+                }
+            </style>
+        </div>  
+        <div class="clients-container">
+            <div class="clients-track">
+                <!-- Set 1 -->
+                <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
+                <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
+                <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
+                <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
+                <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
+                <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
+                <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
+                <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
+                <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
+                <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
+                <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
+                <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
+                <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
+                <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
+                <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
+                <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
+                <!-- Set 2 -->
+                <div class="client-logo"><img src="brand/drhaach.png" alt="drhaach"></div>
+                <div class="client-logo"><img src="brand/haach.png" alt="haach"></div>
+                <div class="client-logo"><img src="brand/fil.png" alt="FIL"></div>
+                <div class="client-logo"><img src="brand/1royal.png" alt="1royal"></div>
+                <div class="client-logo"><img src="brand/33club.png" alt="33 club"></div>
+                <div class="client-logo"><img src="brand/body contour.png" alt="body contour"></div>
+                <div class="client-logo"><img src="brand/covette.png" alt="covette"></div>
+                <div class="client-logo"><img src="brand/drscalp.png" alt="drscalp"></div>
+                <div class="client-logo"><img src="brand/guo tai.png" alt="guo tai"></div>
+                <div class="client-logo"><img src="brand/natrahea.png" alt="natrahea"></div>
+                <div class="client-logo"><img src="brand/neu3.png" alt="neu3"></div>
+                <div class="client-logo"><img src="brand/passage.png" alt="passage"></div>
+                <div class="client-logo"><img src="brand/physiomed.png" alt="physiomed"></div>
+                <div class="client-logo"><img src="brand/private circle.png" alt="private circle"></div>
+                <div class="client-logo"><img src="brand/trichomed.png" alt="trichomed"></div>
+                <div class="client-logo"><img src="brand/wellness unicorn.png" alt="wellness unicorn"></div>
+            </div>
+            <style>
+                .clients-container {
+                    width: 100%;
+                    overflow: hidden;
+                    padding: 20px 0;
+                    background: #fafafa;
                 }
 
-                100% {
-                    transform: translateX(-50%);
-                }
-            }
-
-            @media screen and (min-width: 800px) {
                 .clients-track {
-                    gap: 40px;
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+                    width: max-content;
+                    animation: scroll-left 25s linear infinite;
+                    filter: grayscale(100%);
                 }
 
                 .client-logo img {
-                    max-width: 200px;
-                    max-height: 150px;
+                    max-width: 120px;
+                    max-height: 80px;
+                    object-fit: contain;
                 }
-            }
-        </style>
-    </div>
 
-    <p class="quote">We bridge the precision of technology <br> with the poetry of self-care.</p>
-    <style>
-        .quote {
-            padding: 100px;
-            font-size: 36px;
-            font-weight: 300;
-            line-height: 150%;
-            text-align: center;
-            background: linear-gradient(133.31deg, #35C0A7 -3.05%, #20595E 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-    </style>
+                @keyframes scroll-left {
+                    0% {
+                        transform: translateX(0);
+                    }
 
-    <div id="explanation">
-        <!-- Cell 1 -->
-        <div class="explanation-cell">
-            <div class="explanation-quote" style="background-color: #CFF0F4; background-image: url('matrix.svg');">
-                <p>Through our AI skin analysis, we gently read the unique canvas of people's living beauty</p>
-            </div>
-            <div class="column">
-                <div class="media-container">
-                    <video src="facescan.mp4" autoplay muted loop class="explanation-image"></video>
-                </div>
-                <div class="explanation-product">
-                    <p class="label">PRODUCT</p>
-                    <p class="explanation-title">AI Skin Analysis</p>
-                    <p class="explanation-description">Intelligent face scanner that can analyze skin problems using
-                        phone/tablet/computer's camera</p>
-                </div>
-            </div>
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+
+                @media screen and (min-width: 800px) {
+                    .clients-track {
+                        gap: 40px;
+                    }
+
+                    .client-logo img {
+                        max-width: 200px;
+                        max-height: 150px;
+                    }
+                }
+            </style>
         </div>
-        <!-- Cell 2 -->
-        <div class="explanation-cell">
-            <div class="column" id="chat-column">
-                <div id="chat-hero">
-                    <iframe src="chat.html" class="scaled-frame" scrolling="no"></iframe>
+
+        <section>
+            <p class="quote">We bridge the precision of technology <br> with the poetry of self-care.</p>
+            <style>
+                .quote {
+                    padding: 100px;
+                    font-size: 36px;
+                    font-weight: 300;
+                    line-height: 150%;
+                    text-align: center;
+                    background: linear-gradient(133.31deg, #35c0a7 -3.05%, #20595e 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    text-fill-color: transparent;
+                }
+            </style>
+        </section>
+
+        <div id="explanation">
+            <!-- Cell 1 -->
+            <div class="explanation-cell">
+                <div class="explanation-quote" style="background-image: url('backgrounds/blue-dots.svg');">
+                    <p class="big-quote">Through our AI skin analysis, we gently read the unique canvas of people's living beauty</p>
                 </div>
-                <div class="explanation-product">
-                    <p class="label">PRODUCT</p>
-                    <p class="explanation-title">Conversion Tech® AI Agent</p>
-                    <p class="explanation-description">Digital concierge for brand to help customers book appointment,
-                        following-up them, and manage customer relation as well</p>
+                <div class="column">
+                    <div class="media-container">
+                        <video src="facescan.mp4" autoplay muted loop class="explanation-image"></video>
+                    </div>
+                    <div class="explanation-product">
+                        <p class="label">PRODUCT</p>
+                        <p class="heading-3">AI Skin Analysis</p>
+                        <p class="explanation-description">Intelligent face scanner that can analyze skin problems using
+                            phone/tablet/computer's camera</p>
+                    </div>
                 </div>
             </div>
-            <div class="explanation-quote" style="background-color: #CCF1E8; background-image: url('radial.svg');">
-                <p>While our intuitive AI Agent serves as a mindful guide for your customer journey</p>
-            </div>
-        </div>
-        <!-- Cell 3 -->
-        <div class="explanation-cell">
-            <div class="explanation-quote" style="background-color: #C0D0D0; background-image: url('diamond.svg');">
-                <p>Together, they open the doors to a curated wellness platform</p>
-            </div>
-            <div class="column">
-                <div class="media-container">
-                    <img src="fabulasmockup.png" alt="product" class="explanation-image">
+            <!-- Cell 2 -->
+            <div class="explanation-cell">
+                <div class="column" id="chat-column">
+                    <div id="chat-hero">
+                        <iframe src="chat.html" class="scaled-frame" scrolling="no"></iframe>
+                    </div>
+                    <div class="explanation-product">
+                        <p class="label">PRODUCT</p>
+                        <p class="heading-3">Conversion Tech® AI Agent</p>
+                        <p class="explanation-description">Digital concierge for brand to help customers book appointment,
+                            following-up them, and manage customer relation as well</p>
+                    </div>
                 </div>
-                <div class="explanation-product">
-                    <p class="label">PRODUCT</p>
-                    <p class="explanation-title">Platform for consumers to book services & buy products</p>
-                    <p class="explanation-description">It also allows merchants to list their brands and services for
-                        brand visibility</p>
+                <div class="explanation-quote" style="background-color: #CCF1E8; background-image: url('backgrounds/green-radial.svg');">
+                    <p class="big-quote">While our intuitive AI Agent serves as a mindful guide for your customer journey</p>
                 </div>
             </div>
-        </div>
-        <style>
-            #explanation {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
+            <!-- Cell 3 -->
+            <div class="explanation-cell">
+                <div class="explanation-quote" style="background-color: #C0D0D0; background-image: url('backgrounds/blue-diamond.svg');">
+                    <p class="big-quote">Together, they open the doors to a curated wellness platform</p>
+                </div>
+                <div class="column">
+                    <div class="media-container">
+                        <img src="fabulasmockup.png" alt="product" class="explanation-image">
+                    </div>
+                    <div class="explanation-product">
+                        <p class="label">PRODUCT</p>
+                        <p class="heading-3">Platform for consumers to book services & buy products</p>
+                        <p class="explanation-description">It also allows merchants to list their brands and services for
+                            brand visibility</p>
+                    </div>
+                </div>
+            </div>
+            <style>
+                #explanation {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                }
 
-            .explanation-cell {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                width: 100%;
-            }
-
-            .explanation-quote {
-                padding: 50px;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            .explanation-quote p {
-                font-size: 32px;
-                font-weight: 300;
-                line-height: 150%;
-                text-align: center;
-                background: linear-gradient(133.31deg, #13404A -3.05%, #10788E 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                text-fill-color: transparent;
-            }
-
-            .column {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .media-container {
-                width: 100%;
-            }
-
-            .column img,
-            .column video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .explanation-product {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 10px;
-                padding: 50px;
-                background: #fff;
-            }
-
-            .explanation-title {
-                font-size: 22px;
-                line-height: 130%;
-                font-weight: 400;
-            }
-
-            .explanation-description {
-                font-size: 16px;
-                color: #666;
-                line-height: 150%;
-            }
-
-            .label {
-                font-weight: 400;
-                font-size: 10px;
-                letter-spacing: 0.3em;
-                color: #888;
-            }
-
-            #chat-hero {
-                background: url(lines.jpg) center center;
-                background-size: 100% 100%;
-                width: 100%;
-                aspect-ratio: 1/1;
-                overflow: hidden;
-                display: flex;
-                justify-content: center;
-                align-items: flex-end;
-                position: relative;
-                z-index: -10;
-            }
-
-            .scaled-frame {
-                width: 60%;
-                height: 110%;
-                aspect-ratio: 9/18;
-                transform: translateY(10%);
-                border: none;
-                background: none;
-            }
-
-            @media screen and (max-width: 1000px) {
                 .explanation-cell {
-                    grid-template-columns: 1fr;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    width: 100%;
                 }
 
                 .explanation-quote {
-                    padding: 150px 100px;
+                    padding: 50px;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
                 }
 
-                #chat-column {
-                    order: 2;
+                .explanation-quote p {
+                    font-size: 32px;
+                    font-weight: 300;
+                    line-height: 150%;
+                    text-align: center;
+                    background: linear-gradient(133.31deg, #13404a -3.05%, #10788e 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    text-fill-color: transparent;
                 }
 
-            }
-        </style>
-    </div>
+                .column {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                }
 
-    <section id="clients">
-        <h2>Splendify has been <b>trusted</b> by more than 250 clients</h2>
-        <div class="testimonials">
-            <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
-                <p class="testimonial-text">
-                    As a healthcare provider, we must adhere to stringent marketing and advertising regulations set by
-                    the Ministry of Health. The team at Splendify collaborates with us to gain a deep understanding of
-                    our services.
-                </p>
-                <img src="brand/covette.png" alt="covette" class="testimonial-sender">
-            </div>
-            <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
-                <p class="testimonial-text">
-                    The chiropractic market is highly competitive, but Splendify’s “Conversion Tech” solution has helped
-                    us increase our ROI by more than 8X. The team takes the time to really understand our business.
-                </p>
-                <img src="brand/natrahea.png" alt="natrahea" class="testimonial-sender">
-            </div>
-            <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
-                <p class="testimonial-text">
-                    We have partnered with numerous agencies over the years, but Splendify truly sets itself apart.
-                    Utilizing AI and their proprietary “Conversion Tech” solution, they manage appointment setting
-                    perfectly.
-                </p>
-                <img src="brand/drhaach.png" alt="drhaach" class="testimonial-sender">
-            </div>
-            <div class="testimonial-cell">
-                <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
-                <p class="testimonial-text">
-                    In Singapore’s competitive spa and body care industry, attracting new customers is crucial. The
-                    Splendify team has been instrumental and creative in our success by leveraging various solutions.
-                </p>
-                <img src="brand/fil.png" alt="fil" class="testimonial-sender">
-            </div>
+                .media-container {
+                    width: 100%;
+                }
+
+                .column img,
+                .column video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .explanation-product {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 10px;
+                    padding: 50px;
+                    background: #fff;
+                }
+
+                .explanation-title {
+                    font-size: 22px;
+                    line-height: 130%;
+                    font-weight: 400;
+                }
+
+                .explanation-description {
+                    font-size: 16px;
+                    color: #666;
+                    line-height: 150%;
+                }
+
+                .label {
+                    font-weight: 400;
+                    font-size: 10px;
+                    letter-spacing: 0.3em;
+                    color: #888;
+                }
+
+                #chat-hero {
+                    background: url(lines.jpg) center center;
+                    background-size: 100% 100%;
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    position: relative;
+                    z-index: -10;
+                }
+
+                .scaled-frame {
+                    width: 60%;
+                    height: 110%;
+                    aspect-ratio: 9/18;
+                    transform: translateY(10%);
+                    border: none;
+                    background: none;
+                }
+
+                @media screen and (max-width: 1000px) {
+                    .explanation-cell {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .explanation-quote {
+                        padding: 150px 100px;
+                    }
+
+                    #chat-column {
+                        order: 2;
+                    }
+                }
+            </style>
         </div>
 
-        <style>
-            #clients {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 60px 20px;
-                gap: 30px;
-                width: 100%;
-                box-sizing: border-box;
-            }
+        <section id="clients">
+            <div id="explanator-clients"></div>
+            <div class="testimonials">
+                <div class="testimonial-cell">
+                    <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
+                    <p class="testimonial-text">
+                        As a healthcare provider, we must adhere to stringent marketing and advertising regulations set by
+                        the Ministry of Health. The team at Splendify collaborates with us to gain a deep understanding of
+                        our services.
+                    </p>
+                    <img src="brand/covette.png" alt="covette" class="testimonial-sender">
+                </div>
+                <div class="testimonial-cell">
+                    <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
+                    <p class="testimonial-text">
+                        The chiropractic market is highly competitive, but Splendify’s “Conversion Tech” solution has helped
+                        us increase our ROI by more than 8X. The team takes the time to really understand our business.
+                    </p>
+                    <img src="brand/natrahea.png" alt="natrahea" class="testimonial-sender">
+                </div>
+                <div class="testimonial-cell">
+                    <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
+                    <p class="testimonial-text">
+                        We have partnered with numerous agencies over the years, but Splendify truly sets itself apart.
+                        Utilizing AI and their proprietary “Conversion Tech” solution, they manage appointment setting
+                        perfectly.
+                    </p>
+                    <img src="brand/drhaach.png" alt="drhaach" class="testimonial-sender">
+                </div>
+                <div class="testimonial-cell">
+                    <img src="quote.svg" alt="quote" class="quote-icon" style="width: 24px;">
+                    <p class="testimonial-text">
+                        In Singapore’s competitive spa and body care industry, attracting new customers is crucial. The
+                        Splendify team has been instrumental and creative in our success by leveraging various solutions.
+                    </p>
+                    <img src="brand/fil.png" alt="fil" class="testimonial-sender">
+                </div>
+            </div>
 
-            #clients h2 {
-                text-align: center;
-                font-size: 26px;
-            }
+            <style>
+                #clients {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 60px 20px;
+                    gap: 30px;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
 
-            .testimonials {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-                width: 100%;
-                overflow-x: auto;
-                padding: 10px;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .testimonial-cell {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                padding: 30px;
-                background: #F4F4F4;
-                border-radius: 20px;
-                scroll-snap-align: center;
-                width: 50%;
-                gap: 25px;
-                min-width: 300px;
-            }
-
-            .testimonial-text {
-                font-size: 15px;
-                line-height: 150%;
-                color: #333;
-            }
-
-            .testimonial-sender {
-                height: 100px;
-                object-fit: contain;
-                align-self: flex-start;
-            }
-
-            @media screen and (max-width: 1000px ) {
                 .testimonials {
                     display: flex;
                     flex-direction: row;
                     gap: 20px;
                     width: 100%;
-                }
-            }
-        </style>
-    </section>
-
-       <section id="contact">
-        <div class="contact-text">
-            <h2>Ready to implement Splendify AI?</h2>
-            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
-                personalized AI technology</p>
-            <button class="contact-button" type="button" onclick="window.location.href='wellness.html'">Book Free Consultation</button>
-        </div>
-        <style>
-            #contact {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                background: white;
-                width: 100%;
-                padding: 60px 20px;
-            }
-
-            .contact-text {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-                width: 100%;
-                max-width: 600px;
-                text-align: center;
-            }
-
-            .contact-text p {
-                line-height: 150%;
-                font-size: 16px;
-                font-weight: 300;
-                color: #555;
-            }
-
-            .contact-text h2 {
-                font-size: 28px;
-                line-height: 130%;
-            }
-
-            .contact-button {
-                padding: 14px 28px;
-                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                border-radius: 96px;
-                color: white;
-                font-weight: bold;
-                font-size: 15px;
-                border: none;
-                cursor: pointer;
-                transition: transform 0.2s;
-                box-shadow: 0 4px 15px rgba(53, 192, 167, 0.3);
-            }
-
-            .contact-button:hover {
-                transform: scale(1.03);
-            }
-
-            @media screen and (min-width: 800px) {
-                #contact {
-                    padding: 100px 50px;
+                    overflow-x: auto;
+                    padding: 10px;
+                    scroll-snap-type: x mandatory;
+                    -webkit-overflow-scrolling: touch;
                 }
 
-                .contact-text h2 {
-                    font-size: 48px;
-                }
-
-                .contact-text p {
-                    font-size: 20px;
-                }
-
-                .contact-button {
-                    font-size: 16px;
-                }
-            }
-        </style>
-    </section> 
-
-    <section id="footer">
-        <img src="splendify.svg" alt="splendify" class="footer-logo">
-        <div id="footer-menus">
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">Products</p>
-                <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
-            </div>
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">More</p>
-                <a class="footer-menu" href="about.html">About Splendify</a>
-                <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
-            </div>
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">Socials</p>
-                <a class="footer-menu" target="_blank" href="https://sg.linkedin.com/company/splendify-pte-ltd">LinkedIn</a>
-                <a class="footer-menu" target="_blank" href="https://www.instagram.com/splendify_sg/">Instagram</a>
-            </div>
-        </div>
-        <style>
-            #footer {
-                text-align: left;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: start;
-                padding: 10%;
-                width: 100%;
-                background-color: white;
-                position: relative;
-                z-index: 10;
-            }
-
-            .footer-logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-
-            #footer-menus {
-                display: flex;
-                flex-direction: row;
-                gap: 50px;
-            }
-
-            .footer-menu-list {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-menu {
-                color: #00000080;
-                margin: 0;
-                font-size: 12px;
-                text-decoration: none;
-            }
-
-            .footer-menu-title {
-                font-size: 12px;
-                letter-spacing: 15%;
-                text-transform: uppercase;
-            }
-
-            @media screen and (max-width: 1000px) {
-                #footer {
+                .testimonial-cell {
+                    display: flex;
                     flex-direction: column;
-                    align-items: start;
-                    gap: 20px;
+                    justify-content: space-between;
+                    padding: 30px;
+                    background: #f4f4f4;
+                    border-radius: 20px;
+                    scroll-snap-align: center;
+                    width: 50%;
+                    gap: 25px;
+                    min-width: 300px;
                 }
 
-                #footer-menus {
-                    flex-direction: column;
+                .testimonial-text {
+                    font-size: 15px;
+                    line-height: 150%;
+                    color: #333;
                 }
-            }
-        </style>
-    </section>
 
-    <img id="matrix" src="matrix.svg" alt="matrix">
-    <style>
-        #matrix {
-            width: 100%;
-            height: 60px;
-            object-fit: cover;
-            opacity: 0.5;
-        }
-
-        @media screen and (min-width: 800px) {
-            #matrix {
-                height: 100px;
-            }
-        }
-    </style>
-    <section id="nav-sidebar">
-        <div id="nav-sidebar-header">
-            <img src="splendify.svg" alt="splendify" class="nav-sidebar-logo">
-            <img src="close.svg" alt="close" id="close">
-        </div>
-        <div id="nav-sidebar-menus">
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Products</a>
-                <a class="nav-sidebar-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="nav-sidebar-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                <a class="nav-sidebar-menu" href="fabulas.html">Wellness Platform</a>
-            </div>
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Pages</a>
-                <a class="nav-sidebar-menu" href="about.html">About Splendify</a>
-                <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
-            </div>
-        </div>
-        <style>
-            #nav-sidebar {
-                display: none;
-                flex-direction: column;
-                gap: 100px;
-                align-items: start;
-                padding: 20px 40px;
-                width: 100svw;
-                height: 100svh;
-                background-color: rgba(255, 255, 255, 0.75);
-                position: fixed;
-                top: 0;
-                z-index: 100;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-            }
-
-            #nav-sidebar-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-
-            .nav-sidebar-logo {
-                height: 20px;
-            }
-
-            #nav-sidebar-menus {
-                display: flex;
-                flex-direction: column;
-                gap: 150px;
-            }
-
-            .nav-sidebar-menu-list {
-                display: flex;
-                flex-direction: column;
-                gap: 50px;
-            }
-
-            .nav-sidebar-menu {
-                color: #00000080;
-                margin: 0;
-                font-size: 16px;
-                text-decoration: none;
-            }
-
-            .menu-label {
-                font-size: 16px;
-                letter-spacing: 15%;
-                text-transform: uppercase;
-            }
-        </style>
-    </section>
-    <section id="nav-mobile">
-        <img src="splendify.svg" alt="" class="logo">
-        <img src="menu.svg" alt="menu" id="menu">
-        <style>
-            .logo {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #menu {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #nav-mobile {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                width: 100%;
-                position: fixed;
-                top: 0;
-                z-index: 10;
-            }
-            @media screen and (min-width: 1000px) {
-                #nav-mobile {
-                    display: none;
+                .testimonial-sender {
+                    height: 100px;
+                    object-fit: contain;
+                    align-self: flex-start;
                 }
-            }
-        </style>
+
+                @media screen and (max-width: 1000px) {
+                    .testimonials {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 20px;
+                        width: 100%;
+                    }
+                }
+            </style>
+        </section>
+
+        <!-- Container Komponen -->
+        <div id="cta-container"></div>
+        <div id="footer-container"></div>
+        <div id="navbar-container"></div>
+
         <script>
-            const menu = document.getElementById('menu');
-            const sidebar = document.getElementById('nav-sidebar');
-            const close = document.getElementById('close');
+            // Fungsi sederhana untuk menyisipkan HTML
+            function loadComponent(targetId, filePath, data = {}) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((html) => {
+                        const container = document.getElementById(targetId);
+                        if (!container) return;
 
-            menu.addEventListener('click', () => {
-                sidebar.style.display = 'flex';
+                        container.innerHTML = html;
+
+                        // Loop untuk mengubah isi teks atau atribut berdasarkan ID
+                        Object.keys(data).forEach((id) => {
+                            const element = container.querySelector(`#${id}`);
+                            if (element) {
+                                const value = data[id];
+
+                                // Jika value berbentuk objek (misal untuk ganti src/alt/href gambar)
+                                if (typeof value === "object" && value !== null) {
+                                    Object.keys(value).forEach((attr) => {
+                                        element[attr] = value[attr]; // Contoh: element.src = '...'
+                                    });
+                                } else {
+                                    // Jika value berupa string biasa, ubah textContent
+                                    element.textContent = value;
+                                }
+                            }
+                        });
+                    })
+                    .catch((err) =>
+                        console.error(`Gagal memuat komponen ${filePath}:`, err),
+                    );
+            }
+
+            // Panggil komponen
+            loadComponent("cta-container", "reusable/cta.html");
+            loadComponent("footer-container", "reusable/footer.html");
+
+            function loadNav(targetId, filePath) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((data) => {
+                        // 1. Suntikkan HTML ke dalam container
+                        document.getElementById(targetId).innerHTML = data;
+
+                        // 2. Ambil elemen-elemen untuk menu mobile
+                        const iconMenu = document.getElementById("icon-menu");
+                        const iconClose = document.getElementById("icon-close");
+                        const expanded = document.getElementById("expanded");
+                        const collapsed = document.getElementById("collapsed");
+
+                        // 3. Ambil elemen navbar desktop dan mobile untuk efek scroll
+                        const desktopNav = document.getElementById("navbar");
+                        const mobileNav = document.getElementById("mobile-nav");
+
+                        // --- A. LOGIKA TRIGGER MENU MOBILE ---
+                        if (iconMenu && iconClose) {
+                            iconMenu.addEventListener("click", () => {
+                                expanded.style.display = "flex";
+                                collapsed.style.display = "none";
+                            });
+                            iconClose.addEventListener("click", () => {
+                                expanded.style.display = "none";
+                                collapsed.style.display = "flex";
+                            });
+                        }
+
+                        // --- B. LOGIKA BACKGROUND SCROLL ---
+                        function checkScroll() {
+                            if (window.scrollY > 50) {
+                                if (desktopNav) desktopNav.classList.add("scrolled");
+                                if (mobileNav) mobileNav.classList.add("scrolled");
+                            } else {
+                                if (desktopNav) desktopNav.classList.remove("scrolled");
+                                if (mobileNav) mobileNav.classList.remove("scrolled");
+                            }
+                        }
+
+                        // Jalankan saat pengguna melakukan scroll
+                        window.addEventListener("scroll", checkScroll);
+
+                        // Jalankan sekali saat halaman pertama kali dimuat (jika halaman di-refresh di posisi tengah)
+                        checkScroll();
+                    })
+                    .catch((err) => console.error("Gagal memuat navbar:", err));
+            }
+            // Panggil fungsi seperti biasa
+            loadNav("navbar-container", "reusable/navbar.html");
+            loadComponent("explanator-clients", "reusable/explanator.html", {
+                "explanator-label": "Testimonials",
+                "explanator-title": "What They Say About Us",
+                "explanator-description":
+                    "Splendify has been trusted by more than 50 clients",
             });
-
-            close.addEventListener('click', () => {
-                sidebar.style.display = 'none';
+            loadComponent("hero", "reusable/hero.html", {
+                "hero-label": " ",
+                "hero-title": "Welcome to Splendify",
+                "hero-description":
+                    "A harmony of wellness, beauty, and technology in the most innovative way possible",
+                // Mengubah src gambar hero-background
+                "hero-background": {
+                    src: "../backgrounds/space.jpg",
+                    alt: "Hero Background", // opsional
+                },
+                "hero-icon": {
+                    src: "../splendify-white.svg",
+                    alt: "Hero Background", // opsional
+                },
             });
-
         </script>
-    </section>
-</body>
+    </body>
 
 </html>

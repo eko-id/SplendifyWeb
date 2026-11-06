@@ -1,0 +1,106 @@
+<section id="cta">
+    <div id="cta-card">
+        <div id="cta-text">
+            <h2 class="heading-2">Ready to implement Splendify AI?</h2>
+            <p>Start delivering sophisticated experience to your customer by implementing our personalized AI technology</p>
+            <a class="cta-button" href="../contact.html" target="_parent">Book free consultation</a>
+        </div>
+    </div>
+
+    <style>
+        #cta-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #003357; /* Warna latar biru tua */
+            background-image: url(../wing-pattern.svg);
+            background-repeat: no-repeat;
+            /* Desktop: Pola di sebelah kanan, sedikit diperbesar agar terpotong di tepi */
+            background-position: right 50px center;
+            background-size: auto 150%;
+
+            border-radius: 40px; /* Ujung membulat sesuai desain */
+            padding: 60px 48px;
+            box-sizing: border-box;
+            overflow: hidden;
+            min-height: 380px;
+        }
+
+        #cta-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 50%;
+            color: white;
+            z-index: 1;
+        }
+
+        #cta-text h2 {
+            margin: 0;
+            font-size: 38px;
+            font-weight: 500;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        #cta-text p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 420px;
+        }
+
+        #cta-text a.cta-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 14px 28px;
+            background: #e2f6ed; /* Warna button terang sesuai gambar */
+            color: #003357;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition:
+                transform 0.2s ease,
+                background-color 0.2s ease;
+        }
+
+        #cta-text a.cta-button:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Mobile Layout */
+        @media screen and (max-width: 768px) {
+            #cta-card {
+                background-image: url(../wing-pattern-90.svg);
+                flex-direction: column;
+                justify-content: flex-end;
+                text-align: center;
+                padding: 220px 24px 48px 24px; /* Padding atas besar memberi ruang untuk pattern */
+                border-radius: 32px;
+                background-position: center -50px;
+                background-size: 150% 50%;
+                height: 80svh;
+            }
+
+            #cta-text {
+                max-width: 100%;
+                align-items: center;
+                gap: 16px;
+            }
+
+            #cta-text h2 {
+                font-size: 30px;
+            }
+
+            #cta-text p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</section>

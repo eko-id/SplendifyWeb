@@ -1,604 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabulas Wellness Platform</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
-</head>
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    h1,
-    h2,
-    p {
-        margin: 0;
-    }
-
-    body {
-        font-family: 'Roboto';
-        margin: 0;
-        padding: 0;
-        width: 100svw;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-    }
-</style>
-
-<body>
-    <header>
-        <div class="menu-bar" id="products-menu-bar">
-            <p class="menu title">Products</p>
-            <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
-            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
-            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
-        </div>
-        <img src="splendify.svg" alt="splendify" id="header-logo">
-        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
-            <p class="menu title">PAGES</p>
-            <a class="menu" id="menu-about" href="about.html">About Splendify</a>
-            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
-        </div>
-        <style>
-            header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                display: flex;
-                flex-direction: row;
-                align-items: start;
-                justify-content: space-between;
-                width: 100%;
-                padding: 25px 50px;
-                box-sizing: border-box;
-                /* Mencegah overflow horizontal */
-                z-index: 100;
-            }
-
-            .menu {
-                display: none;
-                flex-direction: row;
-                align-items: center;
-                background-color: rgba(255, 255, 255, 0.5);
-                width: fit-content;
-                height: fit-content;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-radius: 100px;
-                padding: 10px 20px;
-                letter-spacing: 1px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: #000;
-            }
-
-            .menu:hover {
-                background-color: rgba(255, 255, 255, 1);
-                font-weight: 600;
-            }
-
-            .menu p {
-                margin: 0;
-            }
-
-            .title {
-                display: flex;
-            }
-
-            .menu-bar {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-
-            #header-logo {
-                padding: 10px 20px;
-                background: white;
-                border-radius: 100px;
-                height: 40px;
-                position: fixed;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            @media screen and (max-width: 1000px) {
-                header {
-                    display: none;
-                }
-            }
-        </style>
-        <script>
-            const productsMenuBar = document.getElementById('products-menu-bar');
-            const pagesMenuBar = document.getElementById('pages-menu-bar');
-            const headerLogo = document.getElementById('header-logo');
-
-            productsMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-skin').style.display = 'flex';
-                document.getElementById('menu-agent').style.display = 'flex';
-                document.getElementById('menu-platform').style.display = 'flex';
-            });
-
-            productsMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-skin').style.display = 'none';
-                document.getElementById('menu-agent').style.display = 'none';
-                document.getElementById('menu-platform').style.display = 'none';
-            });
-
-            pagesMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-about').style.display = 'flex';
-                document.getElementById('menu-privacy').style.display = 'flex';
-            });
-
-            pagesMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-about').style.display = 'none';
-                document.getElementById('menu-privacy').style.display = 'none';
-            });
-
-            headerLogo.addEventListener('click', () => {
-                window.location.href = 'index.html';
-            });
-        </script>
-    </header>
-    
-    <section id="hero">
-        <div id="hero-text">
-            <img src="fabulas-star.svg" alt="" id="fabulas-star">
-            <h1>Fabulas</h1>
-            <p>Our cutting-edge platform designed to revolutionize people's wellness journey</p>
-        </div>
-        <img src="fabulas-screens.png" alt="" id="screens">
-        <img src="white-gradient.svg" alt="white gradient">
-        <style>
-            #hero {
-                display: flex;
-                flex-direction: column;
-                gap: 10%;
-                text-align: center;
-                width: 100svw;
-                height: 150svh;
-                background-image: url(gradient.jpg);
-                background-size: cover;
-                background-repeat: no-repeat;
-                overflow: hidden;
-                padding-top: 10%;
-            }
-
-            #hero-text {
-                margin: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                text-align: center;
-                padding: 100px;
-                min-height: 50svh;
-                gap: 20px;
-            }
-
-            #hero-text h1 {
-                font-size: 64px;
-                font-weight: 100;
-                line-height: 150%;
-            }
-
-            #hero-text p {
-                font-size: 20px;
-                font-weight: 300;
-                line-height: 150%;
-            }
-
-            #fabulas-star {
-                height: 300px;
-            }
-
-            #screens {
-                scale: 1.5;
-                transform: translateX(25%) translateY(0%);
-                z-index: 2;
-            }
-            @media screen and (max-width: 1000px) {
-                #screens {
-                    scale: 3;
-                    transform: translateX(40%) translateY(10%);
-                }
-            }
-            #white-background {
-                height: 10svh;
-                width: 100svw;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                z-index: 1;
-            }
-        </style>
-        <script>
-    const screens = document.getElementById('screens');
-
-    window.onload = () => {
-        // Atur posisi awal di kanan dan tambahkan efek transisi
-        screens.style.transition = 'transform 20s linear';
-        screens.style.transform = 'translateX(%) translateY(0%)';
-
-        // Berikan delay 1 detik sebelum bergerak ke kiri (posisi 0%)
-        setTimeout(() => {
-            screens.style.transform = 'translateX(-25%) translateY(0%)';
-        }, 1000);
-    }
-</script>
-    </section>
-    <section id="quote">
-        <p>Explore a world where science and beauty converge seamlessly, empowering people to discover their wellness
-        </p>
-        <style>
-            #quote {
-                width: 100svw;
-                padding: 15%;
-                background: white;
-            }
-            #quote p {
-                font-size: 36px;
-                font-weight: 300;
-                text-align: center;
-                background: linear-gradient(133.31deg, #35C0A7 -3.05%, #20595E 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                text-fill-color: transparent;
-            }
-        </style>
-    </section>
-    <section id="explanation">
-        <div class="explanation-cell">
-            <div class="cell-box" style="background-color: #ABF1DD;"><p>With Fabulas, they gain access to  comprehensive skin analysis, personalized treatments, and a curated  selection of top-notch beauty products and services, all at the fingertips</p></div>
-            <img src="fabulas.png" alt="" class="cell-image">
-        </div>
-        <div class="explanation-cell">
-            <img src="erp.png" alt="" class="cell-image" id="erp">
-            <div class="cell-box" style="background-color: #BFDDF7;"><p>Harnessing cutting-edge audience technology and deep expertise in the  Health & Beauty sector, we craft compelling digital campaigns,  fostering brand loyalty, and sustainable growth</p></div>
-        </div>
-        <style>
-            #explanation {
-                display: flex;
-                flex-direction: column;
-            }
-            .explanation-cell {
-                display: flex;
-                flex-direction: row;
-            }
-            .cell-box {
-                width: 50%;
-                padding: 10%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                font-size: 28px;
-                line-height: 150%;
-            }
-            .cell-box p {
-                opacity: 0.5;
-            }
-            .cell-image {
-                width: 50%;
-                background-size: 100% 100%;
-            }
-            @media screen and (max-width: 1000px) {
-                .explanation-cell {
-                    flex-direction: column;
-                }
-                .cell-box {
-                    width: 100%;
-                }
-                .cell-image {
-                    width: 100%;
-                }
-                #erp {
-                    order: 2;
-                }
-            }
-        </style>
-    </section>
-    <section id="contact">
-        <div id="contact-text">
-            <h2>Build your own platform and start getting more happy customer</h2>
-            <p>Start delivering sophisticated experience to your customer by implementing our personalized technology</p>
-            <button class="contact-button" type="button" onclick="window.location.href='wellness.html'">Book Free Consultation</button>
-        </div>
-        <div id="contact-img"></div>
-        <style>
-            #contact {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                padding: 15%;
-                background: white;
-            }
-            #contact-text {
-                width: 50%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 20px;
-                padding: 10%;
-            }
-            #contact-text h2 {
-                font-size: 36px;
-                font-weight: 300;
-                line-height: 150%;
-                text-align: center;
-            } #contact-text p {
-                font-size: 16px;
-                line-height: 150%;
-                opacity: 0.5;
-                text-align: center;
-            }
-            #contact-img {
-                width: 50%;
-                aspect-ratio: 1/1;
-                background-image: url(Mockup.png);
-                background-position: top;
-                background-size: 70%;
-                background-repeat: no-repeat;
-            }
-            #contact-text button {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 10px 20px;
-                gap: 8px;
-                width: fit-content;
-                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                border-radius: 96px;
-                color: white;
-                font-weight: bold;
-                font-size: 16px;
-                border: none;
-            }
-            @media screen and (max-width: 1000px) {
-                #contact {
-                    flex-direction: column;
-                }
-                #contact-text {
-                    width: 100%;
-                }
-                #contact-img {
-                    width: 100%;
-                }
-            }
-        </style>
-    </section>
-    
-    <section id="footer">
-        <img src="splendify.svg" alt="splendify" class="footer-logo">
-        <div id="footer-menus">
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">Products</p>
-                <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
-            </div>
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">More</p>
-                <a class="footer-menu" href="about.html">About Splendify</a>
-                <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
-            </div>
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">Socials</p>
-                <a class="footer-menu" target="_blank" href="https://sg.linkedin.com/company/splendify-pte-ltd">LinkedIn</a>
-                <a class="footer-menu" target="_blank" href="https://www.instagram.com/splendify_sg/">Instagram</a>
-            </div>
-        </div>
-        <style>
-            #footer {
-                text-align: left;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: start;
-                padding: 10%;
-                width: 100%;
-                background-color: white;
-                position: relative;
-                z-index: 10;
-            }
-
-            .footer-logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-
-            #footer-menus {
-                display: flex;
-                flex-direction: row;
-                gap: 50px;
-            }
-
-            .footer-menu-list {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-menu {
-                color: #00000080;
-                margin: 0;
-                font-size: 12px;
-                text-decoration: none;
-            }
-
-            .footer-menu-title {
-                font-size: 12px;
-                letter-spacing: 15%;
-                text-transform: uppercase;
-            }
-
-            @media screen and (max-width: 1000px) {
-                #footer {
-                    flex-direction: column;
-                    align-items: start;
-                    gap: 20px;
-                }
-
-                #footer-menus {
-                    flex-direction: column;
-                }
-            }
-        </style>
-    </section>
-    <img src="linebg.svg" alt="" id="lines">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fabulas Wellness Platform</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="colors.css">
+        <link rel="stylesheet" href="text.css">
+        <link rel="stylesheet" href="layout.css">
+        <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
+    </head>
     <style>
-        #lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -99;
-        }
     </style>
-    <section id="nav-sidebar">
-        <div id="nav-sidebar-header">
-            <img src="splendify.svg" alt="splendify" class="nav-sidebar-logo">
-            <img src="close.svg" alt="close" id="close">
-        </div>
-        <div id="nav-sidebar-menus">
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Products</a>
-                <a class="nav-sidebar-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="nav-sidebar-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                <a class="nav-sidebar-menu" href="fabulas.html">Wellness Platform</a>
-            </div>
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Pages</a>
-                <a class="nav-sidebar-menu" href="about.html">About Splendify</a>
-                <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
-            </div>
-        </div>
-        <style>
-            #nav-sidebar {
-                display: none;
-                flex-direction: column;
-                gap: 100px;
-                align-items: start;
-                padding: 20px 40px;
-                width: 100svw;
-                height: 100svh;
-                background-color: rgba(255, 255, 255, 0.75);
-                position: fixed;
-                top: 0;
-                z-index: 100;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-            }
 
-            #nav-sidebar-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-
-            .nav-sidebar-logo {
-                height: 20px;
-            }
-
-            #nav-sidebar-menus {
-                display: flex;
-                flex-direction: column;
-                gap: 150px;
-            }
-
-            .nav-sidebar-menu-list {
-                display: flex;
-                flex-direction: column;
-                gap: 50px;
-            }
-
-            .nav-sidebar-menu {
-                color: #00000080;
-                margin: 0;
-                font-size: 16px;
-                text-decoration: none;
-            }
-
-            .menu-label {
-                font-size: 16px;
-                letter-spacing: 15%;
-                text-transform: uppercase;
-            }
-        </style>
-    </section>
-    <section id="nav-mobile">
-        <img src="splendify.svg" alt="" class="logo">
-        <img src="menu.svg" alt="menu" id="menu">
-        <style>
-            .logo {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #menu {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #nav-mobile {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                width: 100%;
-                position: fixed;
-                top: 0;
-                z-index: 10;
-            }
-            @media screen and (min-width: 1000px) {
-                #nav-mobile {
-                    display: none;
+    <body>
+    
+        <div id="hero">
+            <img class="label" src="fabulas-star.svg">
+            <h1 class="heading-1">Fabulas Wellness Platform</h1>
+            <p class="body-1">Our cutting-edge wellness platform designed to revolutionize people’s skincare journey</p>
+            <img src="mockups/phone desktop.png" alt="" id="mockup">
+            <style>
+                #hero {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: start;
+                    padding: 0px 50px;
+                    background-image: url(backgrounds/mesh-gradient.jpg);
+                    background-size: 200% 200%;
+                    width: 100svw;
+                    height: 100svh;
+                    text-align: center;
+                    color: white;
+                    overflow: hidden;
                 }
-            }
-        </style>
+                #mockup {
+                    position: absolute;
+                    bottom: 0;
+                    width: 80svw;
+                    height: auto;
+                    object-fit: cover;
+                }
+                .label {
+                    margin-top: 15svh;
+                }
+                @media screen and (max-width: 768px) {
+                    #mockup {
+                        width: 100%;
+                    }
+                }
+            </style>
+        </div>
+        <!-- <section id="quote">
+            <p>Explore a world where science and beauty converge seamlessly, empowering people to discover their wellness
+            </p>
+            <style>
+                #quote {
+                    width: 100svw;
+                    padding: 15%;
+                    background: white;
+                }
+                #quote p {
+                    font-size: 50px;
+                    font-weight: 300;
+                    text-align: center;
+                    background: linear-gradient(133.31deg, #35c0a7 -3.05%, #20595e 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    text-fill-color: transparent;
+                }
+            </style>
+        </section> -->
+        <section id="features">
+            <div id="erp-container"></div>
+            <div class="feature-tabs">
+                <div class="feature-tab" id="feature-appointment">Appointment Management</div>
+                <div class="feature-tab" id="feature-member">Member Management</div>
+                <div class="feature-tab" id="feature-inventory">Inventory Management</div>
+            </div>
+            <div class="feature-cards">
+                <img src="screenshots/appointment day.jpg" alt="" class="feature-card" id="appointment">
+                <img src="screenshots/appointment week.jpg" alt="" class="feature-card">
+                <img src="screenshots/member list.jpg" alt="" class="feature-card" id="member">
+                <img src="screenshots/member detail.jpg" alt="" class="feature-card">
+                <img src="screenshots/item list.jpg" alt="" class="feature-card" id="inventory">
+                <img src="screenshots/item detail.jpg" alt="" class="feature-card">
+            </div>
+
+            <div id="fabulas-container"></div>
+            <div class="feature-tabs">
+                <div class="feature-tab" id="book-appointment">Book Appointment</div>
+                <div class="feature-tab" id="shop-products">Shop Products</div>
+                <div class="feature-tab" id="enjoy-events">Enjoy Events</div>
+                <div class="feature-tab" id="share-evouchers">Buy and Share eVouchers</div>
+            </div>
+            <div class="feature-cards">
+                <div class="mobile-screenshot" id="book"><img src="screenshots/mobile/Treatment/2 Appointment.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/Treatment/New User.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/Treatment/Treatment List.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/Booking/Select Treatment.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/Booking/Select Time.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/Booking/Review.jpg" alt=""></div>
+                <div class="mobile-screenshot" id="shop"><img src="screenshots/mobile/eCommerce/Ecommerce.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/eCommerce/Product Added.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/eCommerce/Using points.jpg" alt=""></div>
+                <div class="mobile-screenshot" id="event"><img src="screenshots/mobile/Event/Campaign List.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/Event/Event Detail.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/Event/Ticket Detail.jpg" alt=""></div>
+                <div class="mobile-screenshot" id="evoucher"><img src="screenshots/mobile/eVoucher/List Vouchers.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/eVoucher/My Vouchers.jpg" alt=""></div>
+                <div class="mobile-screenshot"><img src="screenshots/mobile/eVoucher/Transfer.jpg" alt=""></div>
+            </div>
+            <script>
+                function loadComponent(targetId, filePath, data = {}) {
+                    fetch(filePath)
+                        .then((response) => response.text())
+                        .then((html) => {
+                            const container = document.getElementById(targetId);
+                            if (!container) return;
+
+                            container.innerHTML = html;
+
+                            // Loop untuk mengubah isi teks atau atribut berdasarkan ID
+                            Object.keys(data).forEach((id) => {
+                                const element = container.querySelector(`#${id}`);
+                                if (element) {
+                                    const value = data[id];
+
+                                    // Jika value berbentuk objek (misal untuk ganti src/alt/href gambar)
+                                    if (typeof value === "object" && value !== null) {
+                                        Object.keys(value).forEach((attr) => {
+                                            element[attr] = value[attr]; // Contoh: element.src = '...'
+                                        });
+                                    } else {
+                                        // Jika value berupa string biasa, ubah textContent
+                                        element.textContent = value;
+                                    }
+                                }
+                            });
+                        })
+                        .catch((err) =>
+                            console.error(`Gagal memuat komponen ${filePath}:`, err),
+                        );
+                }
+                // 2. Pemanggilan Komponen-Komponen
+                loadComponent("erp-container", "reusable/explanator.html", {
+                    "explanator-label": "Brand-side app",
+                    "explanator-title": "ERP for Wellness Business",
+                    "explanator-description":
+                        "Built-in features to help you manage your business easily",
+                });
+
+                loadComponent("fabulas-container", "reusable/explanator.html", {
+                    "explanator-label": "Customer-side app",
+                    "explanator-title": "Customizable Mobile App",
+                    "explanator-description":
+                        "A feature-rich mobile app that is ready for iOS and Android",
+                });
+            </script>
+            <style>
+                #features {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    background-color: white;
+                }
+                .feature-tabs {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    width: 100%;
+                    overflow-x: auto;
+                }
+                .feature-tab {
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    background-color: #f5f5f5;
+                    cursor: pointer;
+                    text-wrap: nowrap;
+                    transition: all 0.3s linear;
+                }
+                .feature-tab:hover {
+                    background-color: var(--green20);
+                    border-radius: 100px;
+                }
+                .feature-tab.active {
+                    background-color: var(--green75);
+                    border-radius: 100px;
+                }
+                .feature-cards {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    width: 100%;
+                    height: 500px;
+                    padding-right: 10px;
+                    overflow-x: scroll;
+                }
+                .feature-card {
+                    height: 100%;
+                }
+                .mobile-screenshot {
+                    max-width: 560px;
+                    min-width: 240px;
+                    height: 400px;
+                    aspect-ratio: 9/18;
+                    padding: 20px;
+                    border-radius: 20px;
+                    background-image: url(backgrounds/marble.jpg);
+                    background-size: cover;
+                    overflow: hidden;
+                }
+                .mobile-screenshot img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    border-radius: 20px;
+                }
+            </style>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    // Pemetaan ID antara feature-tab dan ID target gambar/kartu
+                    const tabToTargetMap = {
+                        // Bagian ERP
+                        "feature-appointment": "appointment",
+                        "feature-member": "member",
+                        "feature-inventory": "inventory",
+
+                        // Bagian Fabulas Mobile
+                        "book-appointment": "book",
+                        "shop-products": "shop",
+                        "enjoy-events": "event",
+                        "share-evouchers": "evoucher",
+                        // Catatan: Pasangkan "face-scanning" jika sudah ada ID target gambarnya nanti
+                    };
+
+                    // Menambahkan event listener ke semua .feature-tab
+                    document.querySelectorAll(".feature-tab").forEach((tab) => {
+                        tab.addEventListener("click", function () {
+                            const targetId = tabToTargetMap[this.id];
+
+                            if (targetId) {
+                                const targetElement = document.getElementById(targetId);
+
+                                if (targetElement) {
+                                    // Scroll halus ke elemen target
+                                    targetElement.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "nearest",
+                                        inline: "start", // Cocok jika kontainer feature-cards di-scroll secara horizontal
+                                    });
+                                }
+                            }
+                        });
+                    });
+                });
+            </script>
+        </section>
+    
+        <!-- Container Komponen -->
+        <div id="cta-container"></div>
+        <div id="footer-container"></div>
+        <div id="navbar-container"></div>
+
         <script>
-            const menu = document.getElementById('menu');
-            const sidebar = document.getElementById('nav-sidebar');
-            const close = document.getElementById('close');
+            // Fungsi sederhana untuk menyisipkan HTML
+            function loadComponent(targetId, filePath) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((data) => {
+                        document.getElementById(targetId).innerHTML = data;
+                    })
+                    .catch((err) => console.error("Gagal memuat komponen:", err));
+            }
 
-            menu.addEventListener('click', () => {
-                sidebar.style.display = 'flex';
-            });
+            // Panggil komponen
+            loadComponent("cta-container", "reusable/cta.html");
+            loadComponent("footer-container", "reusable/footer.html");
 
-            close.addEventListener('click', () => {
-                sidebar.style.display = 'none';
-            });
+            function loadNav(targetId, filePath) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((data) => {
+                        // 1. Suntikkan HTML ke dalam container
+                        document.getElementById(targetId).innerHTML = data;
 
+                        // 2. Ambil elemen-elemen untuk menu mobile
+                        const iconMenu = document.getElementById("icon-menu");
+                        const iconClose = document.getElementById("icon-close");
+                        const expanded = document.getElementById("expanded");
+                        const collapsed = document.getElementById("collapsed");
+
+                        // 3. Ambil elemen navbar desktop dan mobile untuk efek scroll
+                        const desktopNav = document.getElementById("navbar");
+                        const mobileNav = document.getElementById("mobile-nav");
+
+                        // --- A. LOGIKA TRIGGER MENU MOBILE ---
+                        if (iconMenu && iconClose) {
+                            iconMenu.addEventListener("click", () => {
+                                expanded.style.display = "flex";
+                                collapsed.style.display = "none";
+                            });
+                            iconClose.addEventListener("click", () => {
+                                expanded.style.display = "none";
+                                collapsed.style.display = "flex";
+                            });
+                        }
+
+                        // --- B. LOGIKA BACKGROUND SCROLL ---
+                        function checkScroll() {
+                            if (window.scrollY > 50) {
+                                if (desktopNav) desktopNav.classList.add("scrolled");
+                                if (mobileNav) mobileNav.classList.add("scrolled");
+                            } else {
+                                if (desktopNav) desktopNav.classList.remove("scrolled");
+                                if (mobileNav) mobileNav.classList.remove("scrolled");
+                            }
+                        }
+
+                        // Jalankan saat pengguna melakukan scroll
+                        window.addEventListener("scroll", checkScroll);
+
+                        // Jalankan sekali saat halaman pertama kali dimuat (jika halaman di-refresh di posisi tengah)
+                        checkScroll();
+                    })
+                    .catch((err) => console.error("Gagal memuat navbar:", err));
+            }
+
+            // Panggil fungsi seperti biasa
+            loadNav("navbar-container", "reusable/navbar.html");
         </script>
-    </section>
-</body>
+    </body>
 
 </html>

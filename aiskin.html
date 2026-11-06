@@ -1,1214 +1,815 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Skin Analysis</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AI Skin Analysis</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"rel="stylesheet">
+        <link rel="icon" href="splendify-icon.svg" type="image/x-icon">
+        <link rel="stylesheet" href="colors.css">
+        <link rel="stylesheet" href="text.css">
+        <link rel="stylesheet" href="layout.css">
+    </head>
 
-        body {
-            margin: 0;
-            font-family: 'Roboto';
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        h1,
-        h2,
-        p {
-            margin: 0;
-        }
-
-        section {
-            width: 100%;
-            flex-wrap: wrap;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <div class="menu-bar" id="products-menu-bar">
-            <p class="menu title">Products</p>
-            <a class="menu" id="menu-skin" href="aiskin.html">AI Skin Analysis</a>
-            <a class="menu" id="menu-agent" href="aiagent.html">Conversion Tech® AI Agent</a>
-            <a class="menu" id="menu-platform" href="fabulas.html">Wellness Platform</a>
-        </div>
-        <img src="splendify.svg" alt="splendify" id="header-logo">
-        <div class="menu-bar" style="align-items: end;" id="pages-menu-bar">
-            <p class="menu title">PAGES</p>
-            <a class="menu" id="menu-about" href="about.html">About Splendify</a>
-            <a class="menu" id="menu-privacy" href="privacy-policy.html">Privacy Policy</a>
-        </div>
+    <body>
+        <div id="hero"></div>
         <style>
-            header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                display: flex;
-                flex-direction: row;
-                align-items: start;
-                justify-content: space-between;
-                width: 100%;
-                padding: 25px 50px;
-                box-sizing: border-box;
-                /* Mencegah overflow horizontal */
-                z-index: 100;
+            #hero p,
+            #hero h1 {
+                /* color: black; */
             }
-
-            .menu {
+            #hero-icon {
                 display: none;
-                flex-direction: row;
-                align-items: center;
-                background-color: rgba(255, 255, 255, 0.5);
-                width: fit-content;
-                height: fit-content;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-radius: 100px;
-                padding: 10px 20px;
-                letter-spacing: 1px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                color: #000;
             }
-
-            .menu:hover {
-                background-color: rgba(255, 255, 255, 1);
-                font-weight: 600;
-            }
-
-            .menu p {
-                margin: 0;
-            }
-
-            .title {
-                display: flex;
-            }
-
-            .menu-bar {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                font-size: 14px;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-
-            #header-logo {
-                padding: 10px 20px;
-                background: white;
-                border-radius: 100px;
-                height: 40px;
+            #hero-background {
                 position: fixed;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            @media screen and (max-width: 1000px) {
-                header {
-                    display: none;
-                }
+                width: 100svw;
+                height: 80svh;
+                object-fit: fill;
             }
         </style>
-        <script>
-            const productsMenuBar = document.getElementById('products-menu-bar');
-            const pagesMenuBar = document.getElementById('pages-menu-bar');
-            const headerLogo = document.getElementById('header-logo');
+        <section style="padding: 0px;">
+            <div id="scroll-track">
+                <div id="sticky-view">
 
-            productsMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-skin').style.display = 'flex';
-                document.getElementById('menu-agent').style.display = 'flex';
-                document.getElementById('menu-platform').style.display = 'flex';
-            });
+                    <div id="result">
+                        <h2>AI Skin Analysis Result</h2>
+                        <div class="result-cell sebum" data-x="0" data-y="-200">
+                            <p class="result-title">Sebum</p>
+                            <p class="result-number">3.0</p>
+                            <p class="result-desc">Moderate</p>
+                        </div>
+                        <div class="result-cell wrinkle" data-x="-200" data-y="-20">
+                            <p class="result-title">Wrinkle</p>
+                            <p class="result-number">5.0</p>
+                            <p class="result-desc">Normal</p>
+                        </div>
+                        <div class="result-cell redness" data-x="200" data-y="-20">
+                            <p class="result-title">Redness</p>
+                            <p class="result-number">4.4</p>
+                            <p class="result-desc">Normal</p>
+                        </div>
+                        <div class="result-cell pore" data-x="-300" data-y="180">
+                            <p class="result-title">Pore</p>
+                            <p class="result-number">5.0</p>
+                            <p class="result-desc">Normal</p>
+                        </div>
+                        <div class="result-cell pigment" data-x="300" data-y="180">
+                            <p class="result-title">Pigment</p>
+                            <p class="result-number">2.5</p>
+                            <p class="result-desc">Severe</p>
+                        </div>
+                        <style>
+                            #result {
+                                position: absolute;
+                                width: 100%;
+                                height: 100vh;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                z-index: 3;
+                                opacity: 0;
+                                pointer-events: none;
+                            }
 
-            productsMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-skin').style.display = 'none';
-                document.getElementById('menu-agent').style.display = 'none';
-                document.getElementById('menu-platform').style.display = 'none';
-            });
+                            #result h2 {
+                                position: absolute;
+                                top: 10%;
+                                text-align: center;
+                                font-size: 32px;
+                                font-weight: 300;
+                            }
 
-            pagesMenuBar.addEventListener('mouseenter', () => {
-                document.getElementById('menu-about').style.display = 'flex';
-                document.getElementById('menu-privacy').style.display = 'flex';
-            });
+                            #result .result-cell {
+                                position: absolute;
+                                padding: 20px 30px;
+                                border-radius: 20px;
+                                text-align: center;
+                                top: 50%;
+                                left: 50%;
+                                opacity: 0;
+                                width: 150px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                will-change: transform, opacity;
+                                backdrop-filter: blur(50px);
+                                -webkit-backdrop-filter: blur(50px);
+                            }
 
-            pagesMenuBar.addEventListener('mouseleave', () => {
-                document.getElementById('menu-about').style.display = 'none';
-                document.getElementById('menu-privacy').style.display = 'none';
-            });
+                            .result-cell p {
+                                margin: 3px 0;
+                            }
 
-            headerLogo.addEventListener('click', () => {
-                window.location.href = 'index.html';
-            });
-        </script>
-    </header>
+                            .result-title {
+                                font-weight: 400;
+                                font-size: 20px;
+                            }
 
-    <img src="linebg.svg" alt="linebg" id="line">
-    <div id="hero">
-        <div id="hero-text">
-            <h1>AI Skin Analysis</h1>
-            <p>Just using your phone camera, AI can asses your skin health</p>
-            <button class="contact-button" type="button" onclick="window.location.href='wellness.html'">Book Free Consultation</button>
-        </div>
-        <style>
-            #line {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100svh;
-                object-fit: cover;
-            }
+                            .result-number {
+                                font-size: 32px;
+                            }
 
-            #hero {
-                width: 100%;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 0 10%;
-                box-sizing: border-box;
-            }
+                            .result-desc {
+                                font-size: 12px;
+                            }
 
-            #hero-text {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 20px;
-                text-align: center;
-                z-index: 2;
-                margin-top: 25%;
-            }
+                            .sebum {
+                                background-color: #66b47275;
+                            }
 
-            #hero-text h1 {
-                font-size: 64px;
-                font-weight: 300;
-            }
+                            .wrinkle {
+                                background-color: #66dad675;
+                            }
 
-            button {
-                padding: 10px 20px;
-                background: white;
-                color: #518575;
-                border: 1.5px solid #518575;
-                border-radius: 100px;
-                cursor: pointer;
-                font-weight: 600;
-                width: fit-content;
-            }
-        </style>
-    </div>
+                            .redness {
+                                background-color: #b4666675;
+                            }
 
-    <section id="scroll-track">
-        <div id="sticky-view">
+                            .pore {
+                                background-color: #6677b475;
+                            }
 
-            <div id="result">
-                <h2>AI Skin Analysis Result</h2>
-                <div class="result-cell sebum" data-x="0" data-y="-200">
-                    <p class="result-title">Sebum</p>
-                    <p class="result-number">3.0</p>
-                    <p class="result-desc">Moderate</p>
-                </div>
-                <div class="result-cell wrinkle" data-x="-200" data-y="-20">
-                    <p class="result-title">Wrinkle</p>
-                    <p class="result-number">5.0</p>
-                    <p class="result-desc">Normal</p>
-                </div>
-                <div class="result-cell redness" data-x="200" data-y="-20">
-                    <p class="result-title">Redness</p>
-                    <p class="result-number">4.4</p>
-                    <p class="result-desc">Normal</p>
-                </div>
-                <div class="result-cell pore" data-x="-300" data-y="180">
-                    <p class="result-title">Pore</p>
-                    <p class="result-number">5.0</p>
-                    <p class="result-desc">Normal</p>
-                </div>
-                <div class="result-cell pigment" data-x="300" data-y="180">
-                    <p class="result-title">Pigment</p>
-                    <p class="result-number">2.5</p>
-                    <p class="result-desc">Severe</p>
+                            .pigment {
+                                background-color: #dfa6fa75;
+                            }
+                        </style>
+                    </div>
+                    <div id="result-mobile">
+                        <h2>AI Skin Analysis Result</h2>
+                        <div class="result-wrapper">
+                            <div class="result-cell sebum">
+                                <p class="result-title">Sebum</p>
+                                <p class="result-number">3.0</p>
+                                <p class="result-desc">Moderate</p>
+                            </div>
+                            <div class="result-cell wrinkle">
+                                <p class="result-title">Wrinkle</p>
+                                <p class="result-number">5.0</p>
+                                <p class="result-desc">Normal</p>
+                            </div>
+                            <div class="result-cell redness">
+                                <p class="result-title">Redness</p>
+                                <p class="result-number">4.4</p>
+                                <p class="result-desc">Normal</p>
+                            </div>
+                            <div class="result-cell pore">
+                                <p class="result-title">Pore</p>
+                                <p class="result-number">5.0</p>
+                                <p class="result-desc">Normal</p>
+                            </div>
+                            <div class="result-cell pigment">
+                                <p class="result-title">Pigment</p>
+                                <p class="result-number">2.5</p>
+                                <p class="result-desc">Severe</p>
+                            </div>
+                        </div>
+                        <style>
+                            /* Mobile Result Styles */
+                            #result-mobile {
+                                position: absolute;
+                                /* Mengikuti container sticky-view */
+                                top: 100px;
+                                left: 0;
+                                width: 100svw;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 15px;
+                                z-index: 100;
+                                box-sizing: border-box;
+                                overflow-x: scroll;
+                                /* Antisipasi layar hp pendek agar bisa di-scroll */
+                            }
+
+                            #result-mobile h2 {
+                                position: absolute;
+                                top: 0%;
+                                width: 100%;
+                                text-align: center;
+                                font-size: 32px;
+                                font-weight: 300;
+                            }
+
+                            .result-wrapper {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                gap: 15px;
+                                overflow-x: scroll;
+                                /* Antisipasi layar hp pendek agar bisa di-scroll */
+                                width: 100%;
+                                justify-content: start;
+                                padding: 30px;
+                            }
+
+                            /* Style khusus untuk cell versi mobile */
+                            #result-mobile .result-cell {
+                                position: relative;
+                                margin-top: 30px;
+                                /* Pastikan terlihat */
+                                min-width: 150px;
+                                width: 100%;
+                                padding: 30px;
+                                border-radius: 20px;
+                                display: flex;
+                                flex-direction: column;
+                                /* Berjejer horizontal di dalam card mobile agar rapi */
+                                justify-content: space-between;
+                                align-items: center;
+                                backdrop-filter: blur(30px);
+                                -webkit-backdrop-filter: blur(30px);
+                            }
+
+                            /* Responsif toggle visibility */
+                            @media screen and (max-width: 1000px) {
+                                #result-mobile {
+                                    display: flex;
+                                }
+
+                                #result {
+                                    display: none !important;
+                                }
+                            }
+
+                            @media screen and (min-width: 1000px) {
+                                #result-mobile {
+                                    display: none !important;
+                                }
+
+                                #result {
+                                    display: flex;
+                                }
+                            }
+                        </style>
+                    </div>
+
+                    <div id="img-container">
+                        <img id="img1" class="img-layer" src="face-eye-open.png" alt="Open">
+                        <img id="img2" class="img-layer" src="face-eye-half-close.png" alt="Half">
+                        <img id="img3" class="img-layer" src="face-eye-close.png" alt="Close">
+                        <img id="img4" class="img-layer" src="face-result.jpg" alt="Result">
+                        <img id="sebum" class="img-layer" src="sebum.png" alt="Sebum">
+                        <img id="wrinkle" class="img-layer" src="wrinkle.png" alt="Wrinkle">
+                        <img id="redness" class="img-layer" src="redness.png" alt="Redness">
+                        <img id="pore" class="img-layer" src="pore.png" alt="Pore">
+                        <img id="pigmentation" class="img-layer" src="pigmentation.png" alt="Pigmentation">
+                        <div id="lightWipe" class="light"></div>
+                    </div>
                 </div>
                 <style>
-                    #result {
+                    /* Pembungkus area scroll animasi (Track) */
+                    #scroll-track {
+                        height: 250svh;
+                        /* Ketinggian dikurangi agar scroll tidak terlalu jauh */
+                        position: relative;
+                    }
+
+                    /* Area yang menempel di layar selama di dalam scroll track */
+                    #sticky-view {
+                        position: sticky;
+                        top: 0;
+                        width: 100%;
+                        height: 100svh;
+                        overflow: hidden;
+                    }
+
+                    /* Container Gambar Utama */
+                    #img-container {
                         position: absolute;
+                        top: 0;
+                        left: 0;
                         width: 100%;
                         height: 100vh;
                         display: flex;
-                        flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        z-index: 3;
-                        opacity: 0;
+                        z-index: 1;
                         pointer-events: none;
+                        transform-origin: center center;
+                        will-change: transform;
                     }
 
-                    #result h2 {
+                    .img-layer {
                         position: absolute;
-                        top: 10%;
-                        text-align: center;
-                        font-size: 32px;
-                        font-weight: 300;
-
-                    }
-
-                    #result .result-cell {
-                        position: absolute;
-                        padding: 20px 30px;
-                        border-radius: 20px;
-                        text-align: center;
-                        top: 50%;
-                        left: 50%;
+                        height: 100vh;
+                        object-fit: contain;
                         opacity: 0;
+                        will-change: opacity;
+                    }
+
+                    #img1 {
+                        opacity: 1;
+                        z-index: 1;
+                    }
+
+                    #img2 {
+                        z-index: 2;
+                    }
+
+                    #img3 {
+                        z-index: 3;
+                    }
+
+                    #img4 {
+                        z-index: 4;
+                    }
+
+                    .light {
+                        position: absolute;
                         width: 150px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
+                        height: 100vh;
+                        background: linear-gradient(90deg, rgba(0, 215, 176, 0) 0%, #00d7b0 100%);
+                        z-index: 4;
+                        opacity: 0;
                         will-change: transform, opacity;
-                        backdrop-filter: blur(50px);
-                        -webkit-backdrop-filter: blur(50px);
                     }
 
-                    .result-cell p {
-                        margin: 3px 0;
+                    /* Aktifkan interaksi hover pada result-cell */
+                    .result-cell {
+                        pointer-events: auto !important;
+                        /* Wajib agar bisa di-hover */
+                        cursor: pointer;
                     }
 
-                    .result-title {
-                        font-weight: 400;
-                        font-size: 20px;
-                    }
-
-                    .result-number {
-                        font-size: 32px;
-                    }
-
-                    .result-desc {
-                        font-size: 12px;
-                    }
-
-                    .sebum {
-                        background-color: #66B47275;
-                    }
-
-                    .wrinkle {
-                        background-color: #66DAD675;
-                    }
-
-                    .redness {
-                        background-color: #B4666675;
-                    }
-
-                    .pore {
-                        background-color: #6677B475;
-                    }
-
-                    .pigment {
-                        background-color: #DFA6FA75;
+                    /* Atur posisi layer gambar-gambar masalah kulit di atas img4 */
+                    #sebum,
+                    #wrinkle,
+                    #redness,
+                    #pore,
+                    #pigmentation {
+                        z-index: 5;
+                        transition: opacity 0.3s ease;
+                        /* Transisi halus saat fade in/out */
                     }
                 </style>
-            </div>
-            <div id="result-mobile">
-                <h2>AI Skin Analysis Result</h2>
-                <div class="result-wrapper">
-                    <div class="result-cell sebum">
-                        <p class="result-title">Sebum</p>
-                        <p class="result-number">3.0</p>
-                        <p class="result-desc">Moderate</p>
-                    </div>
-                    <div class="result-cell wrinkle">
-                        <p class="result-title">Wrinkle</p>
-                        <p class="result-number">5.0</p>
-                        <p class="result-desc">Normal</p>
-                    </div>
-                    <div class="result-cell redness">
-                        <p class="result-title">Redness</p>
-                        <p class="result-number">4.4</p>
-                        <p class="result-desc">Normal</p>
-                    </div>
-                    <div class="result-cell pore">
-                        <p class="result-title">Pore</p>
-                        <p class="result-number">5.0</p>
-                        <p class="result-desc">Normal</p>
-                    </div>
-                    <div class="result-cell pigment">
-                        <p class="result-title">Pigment</p>
-                        <p class="result-number">2.5</p>
-                        <p class="result-desc">Severe</p>
-                    </div>
-                </div>
-                <style>
-                    /* Mobile Result Styles */
-                    #result-mobile {
-                        position: absolute;
-                        /* Mengikuti container sticky-view */
-                        top: 100px;
-                        left: 0;
-                        width: 100svw;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 15px;
-                        z-index: 100;
-                        box-sizing: border-box;
-                        overflow-x: scroll;
-                        /* Antisipasi layar hp pendek agar bisa di-scroll */
+                <script>
+                    function map(val, inMin, inMax, outMin, outMax) {
+                        if (val < inMin) return outMin;
+                        if (val > inMax) return outMax;
+                        return ((val - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
                     }
 
-                    #result-mobile h2 {
-                        position: absolute;
-                        top: 0%;
-                        width: 100%;
-                        text-align: center;
-                        font-size: 32px;
-                        font-weight: 300;
-                    }
+                    let ticking = false;
 
-                    .result-wrapper {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        gap: 15px;
-                        overflow-x: scroll;
-                        /* Antisipasi layar hp pendek agar bisa di-scroll */
-                        width: 100%;
-                        justify-content: start;
-                        padding: 30px;
-                    }
-
-                    /* Style khusus untuk cell versi mobile */
-                    #result-mobile .result-cell {
-                        position: relative;
-                        margin-top: 30px;
-                        /* Pastikan terlihat */
-                        min-width: 150px;
-                        width: 100%;
-                        padding: 30px;
-                        border-radius: 20px;
-                        display: flex;
-                        flex-direction: column;
-                        /* Berjejer horizontal di dalam card mobile agar rapi */
-                        justify-content: space-between;
-                        align-items: center;
-                        backdrop-filter: blur(30px);
-                        -webkit-backdrop-filter: blur(30px);
-                    }
-
-                    /* Responsif toggle visibility */
-                    @media screen and (max-width: 1000px) {
-                        #result-mobile {
-                            display: flex;
+                    window.addEventListener("scroll", () => {
+                        if (!ticking) {
+                            window.requestAnimationFrame(() => {
+                                handleScrollAnimation();
+                                ticking = false;
+                            });
+                            ticking = true;
                         }
-
-                        #result {
-                            display: none !important;
-                        }
-                    }
-
-                    @media screen and (min-width: 1000px) {
-                        #result-mobile {
-                            display: none !important;
-                        }
-
-                        #result {
-                            display: flex;
-                        }
-                    }
-                </style>
-            </div>
-
-            <div id="img-container">
-                <img id="img1" class="img-layer" src="face-eye-open.png" alt="Open">
-                <img id="img2" class="img-layer" src="face-eye-half-close.png" alt="Half">
-                <img id="img3" class="img-layer" src="face-eye-close.png" alt="Close">
-                <img id="img4" class="img-layer" src="face-result.jpg" alt="Result">
-                <img id="sebum" class="img-layer" src="sebum.png" alt="Sebum">
-                <img id="wrinkle" class="img-layer" src="wrinkle.png" alt="Wrinkle">
-                <img id="redness" class="img-layer" src="redness.png" alt="Redness">
-                <img id="pore" class="img-layer" src="pore.png" alt="Pore">
-                <img id="pigmentation" class="img-layer" src="pigmentation.png" alt="Pigmentation">
-                <div id="lightWipe" class="light"></div>
-            </div>
-        </div>
-        <style>
-            /* Pembungkus area scroll animasi (Track) */
-            #scroll-track {
-                height: 250svh;
-                /* Ketinggian dikurangi agar scroll tidak terlalu jauh */
-                position: relative;
-            }
-
-            /* Area yang menempel di layar selama di dalam scroll track */
-            #sticky-view {
-                position: sticky;
-                top: 0;
-                width: 100%;
-                height: 100svh;
-                overflow: hidden;
-            }
-
-            /* Container Gambar Utama */
-            #img-container {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1;
-                pointer-events: none;
-                transform-origin: center center;
-                will-change: transform;
-            }
-
-            .img-layer {
-                position: absolute;
-                height: 100vh;
-                object-fit: contain;
-                opacity: 0;
-                will-change: opacity;
-            }
-
-            #img1 {
-                opacity: 1;
-                z-index: 1;
-            }
-
-            #img2 {
-                z-index: 2;
-            }
-
-            #img3 {
-                z-index: 3;
-            }
-
-            #img4 {
-                z-index: 4;
-            }
-
-            .light {
-                position: absolute;
-                width: 150px;
-                height: 100vh;
-                background: linear-gradient(90deg, rgba(0, 215, 176, 0) 0%, #00D7B0 100%);
-                z-index: 4;
-                opacity: 0;
-                will-change: transform, opacity;
-            }
-
-            /* Aktifkan interaksi hover pada result-cell */
-            .result-cell {
-                pointer-events: auto !important;
-                /* Wajib agar bisa di-hover */
-                cursor: pointer;
-            }
-
-            /* Atur posisi layer gambar-gambar masalah kulit di atas img4 */
-            #sebum,
-            #wrinkle,
-            #redness,
-            #pore,
-            #pigmentation {
-                z-index: 5;
-                transition: opacity 0.3s ease;
-                /* Transisi halus saat fade in/out */
-            }
-        </style>
-        <script>
-            function map(val, inMin, inMax, outMin, outMax) {
-                if (val < inMin) return outMin;
-                if (val > inMax) return outMax;
-                return (val - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-            }
-
-            let ticking = false;
-
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        handleScrollAnimation();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
-
-            function handleScrollAnimation() {
-                const track = document.getElementById('scroll-track');
-                const trackTop = track.offsetTop;
-                const scrollY = window.scrollY;
-
-                // Hitung scroll HANYA ketika scroll-track mulai mencapai atas layar
-                let rawScroll = (scrollY - trackTop) / (track.offsetHeight - window.innerHeight);
-
-                // Batasi nilai scroll maksimal di angka 1 dan minimal 0
-                const scroll = Math.min(Math.max(rawScroll, 0), 1);
-
-                let imgX = 0;
-                let imgY = 0;
-                let imgScale = 1;
-
-                if (scroll <= 0.1) {
-                    imgX = map(scroll, 0.0, 0.1, 0, 0);
-                    imgY = map(scroll, 0.0, 0.1, 15, 15);
-                    imgScale = 1;
-                }
-                else if (scroll <= 0.15) {
-                    imgX = 0;
-                    imgY = map(scroll, 2, 2, 15, 15);
-                    imgScale = map(scroll, 0.15, 0.25, 1, 1);
-                }
-                else if (scroll <= 0.25) {
-                    imgX = 0;
-                    imgY = map(scroll, 0.0, 0.1, 15, 20);
-                    imgScale = map(scroll, 0.15, 0.25, 1, 1.6);
-                }
-                else if (scroll <= 0.5) {
-                    imgX = 0;
-                    imgY = 20;
-                    imgScale = 1.6;
-                }
-                else if (scroll <= 0.6) {
-                    imgX = 0;
-                    imgY = 20;
-                    imgScale = map(scroll, 0.5, 0.6, 1.6, 0.7);
-                }
-                else if (scroll <= 0.7) {
-                    imgX = 0;
-                    imgY = map(scroll, 0.1, 0.1, 20, 20);
-                    imgScale = 0.7;
-                }
-                else {
-                    imgX = 0;
-                    imgY = 20;
-                    imgScale = 0.7;
-                }
-
-                document.getElementById('img-container').style.transform = `translate(${imgX}vw, ${imgY}vh) scale(${imgScale})`;
-
-                let eyeOpacity = map(scroll, 0.15, 0.25, 0, 1) - map(scroll, 0.5, 0.6, 0, 1);
-                document.getElementById('img2').style.opacity = eyeOpacity;
-                document.getElementById('img3').style.opacity = eyeOpacity;
-
-                const light = document.getElementById('lightWipe');
-                if (scroll > 0.3 && scroll < 0.45) {
-                    light.style.opacity = 1;
-                    light.style.transform = `translateX(${map(scroll, 0.3, 0.45, -600, 600)}px)`;
-                } else {
-                    light.style.opacity = 0;
-                }
-
-                // Memunculkan kontainer Result
-                document.getElementById('result').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
-                document.getElementById('result-mobile').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
-
-                // Memunculkan gambar face-result (img4) bersamaan dengan area result
-                document.getElementById('img4').style.opacity = map(scroll, 0.7, 0.75, 0, 1);
-
-                // Animasi sebaran result cells
-                const cells = document.querySelectorAll('.result-cell');
-                const spread = map(scroll, 0.75, 0.9, 0, 1);
-
-                cells.forEach(cell => {
-                    const tx = parseFloat(cell.getAttribute('data-x')) * spread;
-                    const ty = parseFloat(cell.getAttribute('data-y')) * spread;
-                    cell.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(${0.5 + (0.5 * spread)})`;
-                    cell.style.opacity = spread;
-                });
-            }
-
-            // =========================================================
-            // FITUR HOVER GAMBAR PROBLEM KULIT
-            // =========================================================
-
-            // Mapping nama class pada result-cell ke ID gambar
-            const imageMapping = {
-                'sebum': 'sebum',
-                'wrinkle': 'wrinkle',
-                'redness': 'redness',
-                'pore': 'pore',
-                'pigment': 'pigmentation' // Class pigment -> ID pigmentation
-            };
-
-            const allResultCells = document.querySelectorAll('.result-cell');
-
-            allResultCells.forEach(cell => {
-                // Cari class mana yang cocok dengan mapping
-                let targetImageId = null;
-                for (let className in imageMapping) {
-                    if (cell.classList.contains(className)) {
-                        targetImageId = imageMapping[className];
-                        break;
-                    }
-                }
-
-                // Jika ditemukan pasangan gambar, pasang event hover
-                if (targetImageId) {
-                    const targetImg = document.getElementById(targetImageId);
-
-                    // Saat mouse masuk ke card (hover in)
-                    cell.addEventListener('mouseenter', () => {
-                        targetImg.style.opacity = 1;
                     });
 
-                    // Saat mouse keluar dari card (hover out)
-                    cell.addEventListener('mouseleave', () => {
-                        targetImg.style.opacity = 0;
+                    function handleScrollAnimation() {
+                        const track = document.getElementById("scroll-track");
+                        const trackTop = track.offsetTop;
+                        const scrollY = window.scrollY;
+
+                        // Hitung scroll HANYA ketika scroll-track mulai mencapai atas layar
+                        let rawScroll =
+                            (scrollY - trackTop) / (track.offsetHeight - window.innerHeight);
+
+                        // Batasi nilai scroll maksimal di angka 1 dan minimal 0
+                        const scroll = Math.min(Math.max(rawScroll, 0), 1);
+
+                        let imgX = 0;
+                        let imgY = 0;
+                        let imgScale = 1;
+
+                        if (scroll <= 0.1) {
+                            imgX = map(scroll, 0.0, 0.1, 0, 0);
+                            imgY = map(scroll, 0.0, 0.1, 15, 15);
+                            imgScale = 1;
+                        } else if (scroll <= 0.15) {
+                            imgX = 0;
+                            imgY = map(scroll, 2, 2, 15, 15);
+                            imgScale = map(scroll, 0.15, 0.25, 1, 1);
+                        } else if (scroll <= 0.25) {
+                            imgX = 0;
+                            imgY = map(scroll, 0.0, 0.1, 15, 20);
+                            imgScale = map(scroll, 0.15, 0.25, 1, 1.6);
+                        } else if (scroll <= 0.5) {
+                            imgX = 0;
+                            imgY = 20;
+                            imgScale = 1.6;
+                        } else if (scroll <= 0.6) {
+                            imgX = 0;
+                            imgY = 20;
+                            imgScale = map(scroll, 0.5, 0.6, 1.6, 0.7);
+                        } else if (scroll <= 0.7) {
+                            imgX = 0;
+                            imgY = map(scroll, 0.1, 0.1, 20, 20);
+                            imgScale = 0.7;
+                        } else {
+                            imgX = 0;
+                            imgY = 20;
+                            imgScale = 0.7;
+                        }
+
+                        document.getElementById("img-container").style.transform =
+                            `translate(${imgX}vw, ${imgY}vh) scale(${imgScale})`;
+
+                        let eyeOpacity =
+                            map(scroll, 0.15, 0.25, 0, 1) - map(scroll, 0.5, 0.6, 0, 1);
+                        document.getElementById("img2").style.opacity = eyeOpacity;
+                        document.getElementById("img3").style.opacity = eyeOpacity;
+
+                        const light = document.getElementById("lightWipe");
+                        if (scroll > 0.3 && scroll < 0.45) {
+                            light.style.opacity = 1;
+                            light.style.transform = `translateX(${map(scroll, 0.3, 0.45, -600, 600)}px)`;
+                        } else {
+                            light.style.opacity = 0;
+                        }
+
+                        // Memunculkan kontainer Result
+                        document.getElementById("result").style.opacity = map(
+                            scroll,
+                            0.7,
+                            0.75,
+                            0,
+                            1,
+                        );
+                        document.getElementById("result-mobile").style.opacity = map(
+                            scroll,
+                            0.7,
+                            0.75,
+                            0,
+                            1,
+                        );
+
+                        // Memunculkan gambar face-result (img4) bersamaan dengan area result
+                        document.getElementById("img4").style.opacity = map(
+                            scroll,
+                            0.7,
+                            0.75,
+                            0,
+                            1,
+                        );
+
+                        // Animasi sebaran result cells
+                        const cells = document.querySelectorAll(".result-cell");
+                        const spread = map(scroll, 0.75, 0.9, 0, 1);
+
+                        cells.forEach((cell) => {
+                            const tx = parseFloat(cell.getAttribute("data-x")) * spread;
+                            const ty = parseFloat(cell.getAttribute("data-y")) * spread;
+                            cell.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(${0.5 + 0.5 * spread})`;
+                            cell.style.opacity = spread;
+                        });
+                    }
+
+                    // =========================================================
+                    // FITUR HOVER GAMBAR PROBLEM KULIT
+                    // =========================================================
+
+                    // Mapping nama class pada result-cell ke ID gambar
+                    const imageMapping = {
+                        sebum: "sebum",
+                        wrinkle: "wrinkle",
+                        redness: "redness",
+                        pore: "pore",
+                        pigment: "pigmentation", // Class pigment -> ID pigmentation
+                    };
+
+                    const allResultCells = document.querySelectorAll(".result-cell");
+
+                    allResultCells.forEach((cell) => {
+                        // Cari class mana yang cocok dengan mapping
+                        let targetImageId = null;
+                        for (let className in imageMapping) {
+                            if (cell.classList.contains(className)) {
+                                targetImageId = imageMapping[className];
+                                break;
+                            }
+                        }
+
+                        // Jika ditemukan pasangan gambar, pasang event hover
+                        if (targetImageId) {
+                            const targetImg = document.getElementById(targetImageId);
+
+                            // Saat mouse masuk ke card (hover in)
+                            cell.addEventListener("mouseenter", () => {
+                                targetImg.style.opacity = 1;
+                            });
+
+                            // Saat mouse keluar dari card (hover out)
+                            cell.addEventListener("mouseleave", () => {
+                                targetImg.style.opacity = 0;
+                            });
+                        }
                     });
-                }
-            });
 
-            // Panggil satu kali saat muat halaman
-            window.dispatchEvent(new Event('scroll'));
-        </script>
-    </section>
+                    // Panggil satu kali saat muat halaman
+                    window.dispatchEvent(new Event("scroll"));
+                </script>
+            </div>
+        </section>
 
-    <section class="explanation">
-        <div class="explanation-intro">
-            <p class="intro-label">Innovation for All</p>
-            <h2 class="intro-title">All gender. All races. All skin tones</h2>
-            <p class="explanation-description">Our AI Skin Analysis could scan skin healthiness on all skin tones, no
-                matter with gender, no matter with races.</p>
-        </div>
-        <div id="face-grid">
-            <img src="skin-tones/american-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/asian-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/african-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/african-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/indian-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/asian-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/arabian-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/american-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/european-man.jpg" alt="" class="face-cell">
-            <img src="skin-tones/arabian-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/european-woman.jpg" alt="" class="face-cell">
-            <img src="skin-tones/indian-man.jpg" alt="" class="face-cell">
-        </div>
-        <style>
-            .explanation {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 30px;
-                overflow: hidden;
-                z-index: 2;
-            }
-
-            .explanation-intro {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 10svw 10svw 20px 10svw;
-            }
-
-            @media screen and (max-width: 1000px) {
-                .explanation-intro {
-                    padding: 50px 30px 10px 30px;
-                }
-            }
-
-            .intro-label {
-                font-weight: 500;
-                font-size: 11px;
-                letter-spacing: 0.15em;
-                color: #35C0A7;
-                text-transform: uppercase;
-            }
-
-            .intro-title {
-                font-size: 48px;
-                line-height: 125%;
-                font-weight: 300;
-            }
-
-            .explanation-description {
-                padding-top: 15px;
-                font-size: 20px;
-                color: #666;
-                line-height: 150%;
-                font-weight: 300;
-            }
-
-            .slider {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-                width: 100%;
-                overflow-x: scroll;
-                padding: 0px 10svw 10svw 10svw;
-            }
-
-            @media screen and (max-width: 1000px) {
+        <section class="explanation">
+            <div id="explanator-races"></div>
+            <div id="face-grid">
+                <img src="skin-tones/american-man.jpg" alt="" class="face-cell">
+                <img src="skin-tones/asian-woman.jpg" alt="" class="face-cell">
+                <img src="skin-tones/african-woman.jpg" alt="" class="face-cell">
+                <img src="skin-tones/african-man.jpg" alt="" class="face-cell">
+                <img src="skin-tones/indian-woman.jpg" alt="" class="face-cell">
+                <img src="skin-tones/asian-man.jpg" alt="" class="face-cell">
+                <img src="skin-tones/arabian-man.jpg" alt="" class="face-cell">
+                <img src="skin-tones/american-woman.jpg" alt="" class="face-cell">
+                <img src="skin-tones/european-man.jpg" alt="" class="face-cell">
+                <img src="skin-tones/arabian-woman.jpg" alt="" class="face-cell">
+                <img src="skin-tones/european-woman.jpg" alt="" class="face-cell">
+                <img src="skin-tones/indian-man.jpg" alt="" class="face-cell">
+            </div>
+            <style>
                 .slider {
-                    padding: 0px 30px 20px 30px;
-                }
-            }
-
-            .slider-cell {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .slider-text-wrap {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 0px 20px;
-            }
-
-            .slider-title {
-                font-size: 20px;
-                line-height: 150%;
-                font-weight: 500;
-            }
-
-            .slider-text {
-                width: 100%;
-                font-size: 15px;
-                line-height: 150%;
-                color: #666;
-            }
-
-            .slider-image {
-                aspect-ratio: 1/1;
-                max-height: 300px;
-                border-radius: 50px;
-                object-fit: cover;
-            }
-
-            /* Mengatur tata letak grid (opsional, sesuaikan dengan kebutuhanmu) */
-            #face-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                /* Membuat 4 kolom */
-                /* perspective memberikan kedalaman ruang 3D pada elemen di dalamnya */
-                perspective: 1000px;
-            }
-
-            .face-cell {
-                width: 100%;
-                transition: transform 0.2s cubic-bezier(0.4, 0.2, 0.2, 1);
-
-                /* Mempertahankan efek 3D saat elemen berputar */
-                transform-style: preserve-3d;
-            }
-
-            @keyframes flip360 {
-                0% {
-                    transform: rotateY(0deg);
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                    width: 100%;
+                    overflow-x: scroll;
                 }
 
-                100% {
-                    transform: rotateY(360deg);
-                }
-            }
-
-            /* Kelas ini akan disisipkan secara otomatis oleh JavaScript */
-            .flip-active {
-                /* Menjalankan animasi selama 0.8 detik */
-                animation: flip360 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
-            }
-
-            @media screen and (max-width: 800px) {
-                .intro-title {
-                    font-size: 32px;
+                @media screen and (max-width: 1000px) {
+                    .slider {
+                        flex-direction: column;
+                    }
                 }
 
-                #face-grid {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-            }
-        </style>
-        <script>
-            // 1. Ambil semua elemen gambar yang memiliki class 'face-cell'
-            const images = document.querySelectorAll('.face-cell');
-
-            function flipRandomImage() {
-                // 2. Pilih indeks acak dari total jumlah gambar yang ada
-                const randomIndex = Math.floor(Math.random() * images.length);
-                const selectedImage = images[randomIndex];
-
-                // 3. Tambahkan class 'flip-active' untuk memicu animasi CSS
-                selectedImage.classList.add('flip-active');
-
-                // 4. Hapus class tersebut setelah animasi selesai (800 milidetik / 0.8 detik)
-                // Ini penting agar gambar yang sama bisa dianimasikan lagi jika terpilih kembali nanti
-                setTimeout(() => {
-                    selectedImage.classList.remove('flip-active');
-                }, 1000);
-            }
-
-            // 5. Jalankan fungsi secara terus-menerus (infinite) setiap 1000 milidetik (1 detik)
-            // Kamu bisa mengubah angka 1000 untuk mempercepat atau memperlambat interval kemunculan animasi
-            setInterval(flipRandomImage, 2000);
-        </script>
-    </section>
-    <section class="explanation">
-        <div class="explanation-intro">
-            <p class="intro-label">Use Case</p>
-            <h2 class="intro-title">Imagine this AI technology used for these businesses</h2>
-        </div>
-        <div class="slider">
-            <div class="slider-cell">
-                <img src="beauty-clinic.jpeg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Beauty Clinics</p>
-                    <p class="slider-text">Customers could do a screening conveniently before undergo a treatment. Then,
-                        practitioner could treat customer based on screening result accurately</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="manufacture.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Skincare Manufacturer</p>
-                    <p class="slider-text">Manufacturer could build an app for people to get engaged with the products
-                    </p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="aesthetician.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Aesthetics</p>
-                    <p class="slider-text">Aesthetician could treat customer accurately and give personalized
-                        recommendation while keeping the experience engaging and enjoyful</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="supplement.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Supplement Company</p>
-                    <p class="slider-text">Company can promote their supplement through recommended products based on
-                        face scanning result</p>
-                </div>
-            </div>
-            <div class="slider-cell">
-                <img src="skincare-retail.jpg" alt="" class="slider-image">
-                <div class="slider-text-wrap">
-                    <p class="slider-title">Beauty & Wellness Retail</p>
-                    <p class="slider-text">Retailer could use Splendify AI technology to recommend their products based
-                        on face scanning result</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <img src="face-smile.png" alt="contact">
-        <div class="contact-text">
-            <h2>Ready to implement Splendify AI?</h2>
-            <p>Start delivering sophisticated experience to your customer and increase efficiency by implementing our
-                personalized AI technology</p>
-            <button class="contact-button" type="button" onclick="window.location.href='wellness.html'">Book Free Consultation</button>
-        </div>
-        <style>
-            #contact {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                justify-items: center;
-                gap: 0px;
-                align-items: center;
-                z-index: 2;
-                width: 100%;
-            }
-
-            @media screen and (max-width: 1000px) {
-                #contact {
+                .slider-cell {
+                    width: 100%;
                     display: flex;
                     flex-direction: column;
+                    gap: 15px;
                 }
 
-                .contact-text {
-                    align-items: center;
-                    padding: 50px;
-                }
-
-                .contact-text h2 {
-                    text-align: center;
-                    font-weight: 300;
-                    font-size: 28px;
-                }
-
-                .contact-text p {
-                    text-align: center;
-                    font-weight: 300;
-                    font-size: 14px;
-                }
-            }
-
-            #contact img {
-                aspect-ratio: 1/1;
-                width: 100%;
-                background: white;
-            }
-
-            .contact-text {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                text-align: left;
-                width: 100%;
-                padding: 15%;
-                background: white;
-            }
-
-            .contact-text h2 {
-                font-size: 40px;
-                font-weight: 300;
-                line-height: 150%;
-            }
-
-            .contact-text p {
-                line-height: 150%;
-                font-size: 20px;
-                font-weight: 300;
-            }
-
-            .contact-button {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 10px 20px;
-                gap: 8px;
-                width: fit-content;
-                background: linear-gradient(111.83deg, #35C0A7 28.6%, #5BD9BB 100%);
-                border-radius: 96px;
-                color: white;
-                font-weight: bold;
-                font-size: 16px;
-                border: none;
-            }
-
-            .contact-button:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    </section>
-
-    <section id="footer">
-        <img src="splendify.svg" alt="splendify" class="footer-logo">
-        <div id="footer-menus">
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">Products</p>
-                <a class="footer-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="footer-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                <a class="footer-menu" href="fabulas.html">Wellness Platform</a>
-            </div>
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">More</p>
-                <a class="footer-menu" href="about.html">About Splendify</a>
-                <a class="footer-menu" href="privacy-policy.html">Privacy Policy</a>
-            </div>
-            <div class="footer-menu-list">
-                <p class="footer-menu-title">Socials</p>
-                <a class="footer-menu" target="_blank" href="https://sg.linkedin.com/company/splendify-pte-ltd">LinkedIn</a>
-                <a class="footer-menu" target="_blank" href="https://www.instagram.com/splendify_sg/">Instagram</a>
-            </div>
-        </div>
-        <style>
-            #footer {
-                text-align: left;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: start;
-                padding: 10%;
-                width: 100%;
-                background-color: white;
-                position: relative;
-                z-index: 10;
-            }
-
-            .footer-logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-
-            #footer-menus {
-                display: flex;
-                flex-direction: row;
-                gap: 50px;
-            }
-
-            .footer-menu-list {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-menu {
-                color: #00000080;
-                margin: 0;
-                font-size: 12px;
-                text-decoration: none;
-            }
-
-            .footer-menu-title {
-                font-size: 12px;
-                letter-spacing: 15%;
-                text-transform: uppercase;
-            }
-
-            @media screen and (max-width: 1000px) {
-                #footer {
+                .slider-text-wrap {
+                    display: flex;
                     flex-direction: column;
-                    align-items: start;
-                    gap: 20px;
+                    gap: 5px;
+                    padding: 0px 20px;
                 }
 
-                #footer-menus {
-                    flex-direction: column;
+                .slider-title {
+                    font-size: 20px;
+                    line-height: 150%;
+                    font-weight: 500;
                 }
-            }
-        </style>
-    </section>
 
-    <section id="nav-sidebar">
-        <div id="nav-sidebar-header">
-            <img src="splendify.svg" alt="splendify" class="nav-sidebar-logo">
-            <img src="close.svg" alt="close" id="close">
-        </div>
-        <div id="nav-sidebar-menus">
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Products</a>
-                <a class="nav-sidebar-menu" href="aiskin.html">AI Skin Analysis</a>
-                <a class="nav-sidebar-menu" href="aiagent.html">Conversion Tech® AI Agent</a>
-                <a class="nav-sidebar-menu" href="fabulas.html">Wellness Platform</a>
+                .slider-text {
+                    width: 100%;
+                    font-size: 15px;
+                    line-height: 150%;
+                    color: #666;
+                }
+
+                .slider-image {
+                    aspect-ratio: 1/1;
+                    max-height: 300px;
+                    border-radius: 30px;
+                    object-fit: cover;
+                }
+
+                /* Mengatur tata letak grid (opsional, sesuaikan dengan kebutuhanmu) */
+                #face-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    /* Membuat 4 kolom */
+                    /* perspective memberikan kedalaman ruang 3D pada elemen di dalamnya */
+                    perspective: 1000px;
+                    overflow: hidden;
+                    border-radius: 30px;
+                }
+
+                .face-cell {
+                    width: 100%;
+                    transition: transform 0.2s cubic-bezier(0.4, 0.2, 0.2, 1);
+
+                    /* Mempertahankan efek 3D saat elemen berputar */
+                    transform-style: preserve-3d;
+                }
+
+                @keyframes flip360 {
+                    0% {
+                        transform: rotateY(0deg);
+                    }
+
+                    100% {
+                        transform: rotateY(360deg);
+                    }
+                }
+
+                /* Kelas ini akan disisipkan secara otomatis oleh JavaScript */
+                .flip-active {
+                    /* Menjalankan animasi selama 0.8 detik */
+                    animation: flip360 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+                }
+
+                @media screen and (max-width: 800px) {
+                    .intro-title {
+                        font-size: 32px;
+                    }
+
+                    #face-grid {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+            </style>
+            <script>
+                // 1. Ambil semua elemen gambar yang memiliki class 'face-cell'
+                const images = document.querySelectorAll(".face-cell");
+
+                function flipRandomImage() {
+                    // 2. Pilih indeks acak dari total jumlah gambar yang ada
+                    const randomIndex = Math.floor(Math.random() * images.length);
+                    const selectedImage = images[randomIndex];
+
+                    // 3. Tambahkan class 'flip-active' untuk memicu animasi CSS
+                    selectedImage.classList.add("flip-active");
+
+                    // 4. Hapus class tersebut setelah animasi selesai (800 milidetik / 0.8 detik)
+                    // Ini penting agar gambar yang sama bisa dianimasikan lagi jika terpilih kembali nanti
+                    setTimeout(() => {
+                        selectedImage.classList.remove("flip-active");
+                    }, 1000);
+                }
+
+                // 5. Jalankan fungsi secara terus-menerus (infinite) setiap 1000 milidetik (1 detik)
+                // Kamu bisa mengubah angka 1000 untuk mempercepat atau memperlambat interval kemunculan animasi
+                setInterval(flipRandomImage, 2000);
+            </script>
+        </section>
+        <section class="explanation">
+            <div id="explanator-cases"></div>
+            <div class="slider">
+                <div class="slider-cell">
+                    <img src="beauty-clinic.jpeg" alt="" class="slider-image">
+                    <div class="slider-text-wrap">
+                        <p class="slider-title">Beauty Clinics</p>
+                        <p class="slider-text">Customers could do a screening conveniently before undergo a treatment. Then,
+                            practitioner could treat customer based on screening result accurately</p>
+                    </div>
+                </div>
+                <div class="slider-cell">
+                    <img src="manufacture.jpg" alt="" class="slider-image">
+                    <div class="slider-text-wrap">
+                        <p class="slider-title">Skincare Manufacturer</p>
+                        <p class="slider-text">Manufacturer could build an app for people to get engaged with the products
+                        </p>
+                    </div>
+                </div>
+                <div class="slider-cell">
+                    <img src="aesthetician.jpg" alt="" class="slider-image">
+                    <div class="slider-text-wrap">
+                        <p class="slider-title">Aesthetics</p>
+                        <p class="slider-text">Aesthetician could treat customer accurately and give personalized
+                            recommendation while keeping the experience engaging and enjoyful</p>
+                    </div>
+                </div>
+                <div class="slider-cell">
+                    <img src="supplement.jpg" alt="" class="slider-image">
+                    <div class="slider-text-wrap">
+                        <p class="slider-title">Supplement Company</p>
+                        <p class="slider-text">Company can promote their supplement through recommended products based on
+                            face scanning result</p>
+                    </div>
+                </div>
+                <div class="slider-cell">
+                    <img src="skincare-retail.jpg" alt="" class="slider-image">
+                    <div class="slider-text-wrap">
+                        <p class="slider-title">Beauty & Wellness Retail</p>
+                        <p class="slider-text">Retailer could use Splendify AI technology to recommend their products based
+                            on face scanning result</p>
+                    </div>
+                </div>
             </div>
-            <div class="nav-sidebar-menu-list">
-                <a class="menu-label">Pages</a>
-                <a class="nav-sidebar-menu" href="about.html">About Splendify</a>
-                <a class="nav-sidebar-menu" href="privacy-policy.html">Privacy Policy</a>
-            </div>
-        </div>
-        <style>
-            #nav-sidebar {
-                display: none;
-                flex-direction: column;
-                gap: 100px;
-                align-items: start;
-                padding: 20px 40px;
-                width: 100svw;
-                height: 100svh;
-                background-color: rgba(255, 255, 255, 0.75);
-                position: fixed;
-                top: 0;
-                z-index: 100;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-            }
+        </section>
 
-            #nav-sidebar-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
+        <!-- Container Komponen -->
+        <div id="cta-container"></div>
+        <div id="footer-container"></div>
+        <div id="navbar-container"></div>
 
-            .nav-sidebar-logo {
-                height: 20px;
-            }
-
-            #nav-sidebar-menus {
-                display: flex;
-                flex-direction: column;
-                gap: 150px;
-            }
-
-            .nav-sidebar-menu-list {
-                display: flex;
-                flex-direction: column;
-                gap: 50px;
-            }
-
-            .nav-sidebar-menu {
-                color: #00000080;
-                margin: 0;
-                font-size: 16px;
-                text-decoration: none;
-            }
-
-            .menu-label {
-                font-size: 16px;
-                letter-spacing: 15%;
-                text-transform: uppercase;
-            }
-        </style>
-    </section>
-    <section id="nav-mobile">
-        <img src="splendify.svg" alt="" class="logo">
-        <img src="menu.svg" alt="menu" id="menu">
-        <style>
-            .logo {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #menu {
-                border-radius: 15px;
-                backdrop-filter: blur(50px);
-                -webkit-backdrop-filter: blur(50px);
-                background-color: rgba(255, 255, 255, 0.75);
-                padding: 10px 20px;
-            }
-
-            #nav-mobile {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                width: 100%;
-                position: fixed;
-                top: 0;
-                z-index: 10;
-            }
-            @media screen and (min-width: 1000px) {
-                #nav-mobile {
-                    display: none;
-                }
-            }
-        </style>
         <script>
-            const menu = document.getElementById('menu');
-            const sidebar = document.getElementById('nav-sidebar');
-            const close = document.getElementById('close');
+            // Fungsi sederhana untuk menyisipkan HTML
+            function loadComponent(targetId, filePath, data = {}) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((html) => {
+                        const container = document.getElementById(targetId);
+                        if (!container) return;
 
-            menu.addEventListener('click', () => {
-                sidebar.style.display = 'flex';
+                        container.innerHTML = html;
+
+                        // Loop untuk mengubah isi teks atau atribut berdasarkan ID
+                        Object.keys(data).forEach((id) => {
+                            const element = container.querySelector(`#${id}`);
+                            if (element) {
+                                const value = data[id];
+
+                                // Jika value berbentuk objek (misal untuk ganti src/alt/href gambar)
+                                if (typeof value === "object" && value !== null) {
+                                    Object.keys(value).forEach((attr) => {
+                                        element[attr] = value[attr]; // Contoh: element.src = '...'
+                                    });
+                                } else {
+                                    // Jika value berupa string biasa, ubah textContent
+                                    element.textContent = value;
+                                }
+                            }
+                        });
+                    })
+                    .catch((err) =>
+                        console.error(`Gagal memuat komponen ${filePath}:`, err),
+                    );
+            }
+
+            // Panggil komponen
+            loadComponent("cta-container", "reusable/cta.html");
+            loadComponent("footer-container", "reusable/footer.html");
+            function loadNav(targetId, filePath) {
+                fetch(filePath)
+                    .then((response) => response.text())
+                    .then((data) => {
+                        // 1. Suntikkan HTML ke dalam container
+                        document.getElementById(targetId).innerHTML = data;
+
+                        // 2. Ambil elemen-elemen untuk menu mobile
+                        const iconMenu = document.getElementById("icon-menu");
+                        const iconClose = document.getElementById("icon-close");
+                        const expanded = document.getElementById("expanded");
+                        const collapsed = document.getElementById("collapsed");
+
+                        // 3. Ambil elemen navbar desktop dan mobile untuk efek scroll
+                        const desktopNav = document.getElementById("navbar");
+                        const mobileNav = document.getElementById("mobile-nav");
+
+                        // --- A. LOGIKA TRIGGER MENU MOBILE ---
+                        if (iconMenu && iconClose) {
+                            iconMenu.addEventListener("click", () => {
+                                expanded.style.display = "flex";
+                                collapsed.style.display = "none";
+                            });
+                            iconClose.addEventListener("click", () => {
+                                expanded.style.display = "none";
+                                collapsed.style.display = "flex";
+                            });
+                        }
+
+                        // --- B. LOGIKA BACKGROUND SCROLL ---
+                        function checkScroll() {
+                            if (window.scrollY > 50) {
+                                if (desktopNav) desktopNav.classList.add("scrolled");
+                                if (mobileNav) mobileNav.classList.add("scrolled");
+                            } else {
+                                if (desktopNav) desktopNav.classList.remove("scrolled");
+                                if (mobileNav) mobileNav.classList.remove("scrolled");
+                            }
+                        }
+
+                        // Jalankan saat pengguna melakukan scroll
+                        window.addEventListener("scroll", checkScroll);
+
+                        // Jalankan sekali saat halaman pertama kali dimuat (jika halaman di-refresh di posisi tengah)
+                        checkScroll();
+                    })
+                    .catch((err) => console.error("Gagal memuat navbar:", err));
+            }
+
+            // Panggil fungsi seperti biasa
+            loadNav("navbar-container", "reusable/navbar.html");
+            loadComponent("explanator-races", "reusable/explanator.html", {
+                "explanator-label": "Innovation for All",
+                "explanator-title": "All gender. All races. All skin tones",
+                "explanator-description":
+                    "Our AI Skin Analysis could scan skin healthiness on all skin tones, no matter with gender, no matter with races",
             });
-
-            close.addEventListener('click', () => {
-                sidebar.style.display = 'none';
+            loadComponent("explanator-cases", "reusable/explanator.html", {
+                "explanator-label": "Use Case",
+                "explanator-title": "Imagine this AI technology used for these businesses",
+                "explanator-description":
+                    "Our AI Skin Analysis be used for varies business such as beauty, wellness, and skincare",
             });
-
+            loadComponent("hero", "reusable/hero.html", {
+                "hero-label": "Splendify AI",
+                "hero-title": "AI Skin Analysis",
+                "hero-description":
+                    "Just using your phone camera, AI can asses your skin health",
+                // Mengubah src gambar hero-background
+                "hero-background": {
+                    src: "../backgrounds/mesh-gradient.jpg",
+                    alt: "Hero Background", // opsional
+                },
+            });
         </script>
-    </section>
-</body>
+    </body>
 
 </html>

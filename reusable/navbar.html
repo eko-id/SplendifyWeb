@@ -1,0 +1,149 @@
+<div id="navbar">
+    <a href="/"><img src="../splendify.svg" alt="logo splendify" class="logo"></a>
+    <div class="navbar-menus">
+        <a href="/aiskin.html" target="_parent" class="navbar-menu clickable body-2">AI Skin Analysis</a>
+        <a href="/aiagent.html" target="_parent" class="navbar-menu clickable body-2">Conversion Tech AI Agent</a>
+        <a href="/fabulas.html" target="_parent" class="navbar-menu clickable body-2">Wellness Platform</a>
+    </div>
+    <a href="contact.html" id="contact-button">Contact us</a>
+</div>
+
+<div id="mobile-nav">
+    <div id="collapsed" class="navbar-list">
+        <div class="menu-item">
+            <a href="/"><img src="../splendify.svg" alt="logo splendify" class="logo"></a>
+            <img class="clickable" src="../icons/menu.svg" alt="" id="icon-menu">
+        </div>
+    </div>
+    <div id="expanded" class="navbar-list">
+        <div class="menu-item">
+            <a href="/"><img src="../splendify.svg" alt="logo splendify"></a>
+            <img class="clickable" src="../icons/close.svg" alt="" id="icon-close" style="width: 24px;">
+        </div>
+        <a class="menu-item heading-3">Products</a>
+        <a href="/aiskin.html" target="_parent" class="menu-item clickable body-2">AI Skin Analysis<img class="menu-icon" src="../icons/arrow-right.svg"></a>
+        <a href="/aiagent.html" target="_parent" class="menu-item clickable body-2">Conversion Tech AI Agent<img class="menu-icon" src="../icons/arrow-right.svg"></a>
+        <a href="/fabulas.html" target="_parent" class="menu-item clickable body-2">Wellness Platform<img class="menu-icon" src="../icons/arrow-right.svg"></a>
+        <a class="menu-item heading-3">More</a>
+        <a href="/privacy-policy.html" target="_parent" class="menu-item clickable body-2">Privacy Policy<img class="menu-icon" src="../icons/arrow-right.svg"></a>
+        <a href="/about.html" target="_parent" class="menu-item clickable body-2">About Splendify<img class="menu-icon" src="../icons/arrow-right.svg"></a>
+        <a href="/quickwin.html" target="_parent" class="menu-item clickable body-2">IMDA Quickwin Programme<img class="menu-icon" src="../icons/arrow-right.svg"></a>
+        <a href="/contact.html" target="_parent" class="menu-item clickable body-2">Contact us<img class="menu-icon" src="../icons/arrow-right.svg"></a>
+    </div>
+</div>
+
+<style>
+    /* Transparan Blur saat Awal */
+    #navbar, #mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #navbar .logo, #mobile-nav .logo {
+        filter: grayscale(1) brightness(5.5);
+    }
+    #navbar #icon-menu, #mobile-nav #icon-menu {
+        filter: invert(100%);
+    }
+    /* Warna Putih saat Di-scroll */
+    #navbar.scrolled, #mobile-nav.scrolled {
+        background: #ffffff99;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    #navbar.scrolled .logo, #mobile-nav.scrolled .logo {
+        filter: grayscale(0) brightness(1);
+    }
+    #navbar.scrolled #icon-menu, #mobile-nav.scrolled #icon-menu {
+        filter: invert(0);
+    }
+
+    #navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        box-sizing: border-box;
+    }
+
+    .navbar-menus {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #navbar .navbar-menu{
+        filter: invert(100%);
+        text-decoration: none;
+        padding: 5px 15px;
+        border-radius: 20px;
+    }
+    #navbar.scrolled .navbar-menu {
+        color: black;
+        filter: invert(0);
+    }
+
+    #contact-button {
+        color: white;
+        text-decoration: none;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background: linear-gradient(112deg, #35c0a7, #5bd9bb);
+        font-weight: 600;
+        font-size: 12px;
+        width: fit-content;
+    }
+
+    #mobile-nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #expanded {
+        display: none;
+        height: 100svh;
+        background: #ffffff;
+    }
+
+    .navbar-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 20px;
+        color: black;
+        text-decoration: none;
+    }
+
+    .clickable:hover {
+        background-color: var(--mist);
+        cursor: pointer;
+    }
+
+    .menu-icon {
+        width: 10px;
+        aspect-ratio: 1/1;
+    }
+
+    @media screen and (max-width: 768px) {
+        #navbar {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        #mobile-nav {
+            display: none;
+        }
+    }
+</style>
