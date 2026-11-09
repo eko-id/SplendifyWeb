@@ -43,6 +43,26 @@
                 }
             }
         </style>
+        <section id="mockup-chat">
+            <div>
+                <p class="heading-3">Digital concierge for brand</p>
+                <p class="body-2">AI agent that help customers to book appointment, following-up them, and manage customer relation as well</p>
+            </div>
+            <div id="chat-frame">
+                <embed src="chat.html"></embed>
+            </div>
+            <style>
+                #mockup-chat {
+                    text-align: center;
+                    gap: 25px;
+                }
+                #chat-frame embed {
+                    height: 80svh;
+                    border: 0;
+                    aspect-ratio: 9/18;
+                }
+            </style>
+        </section>
         <section class="explanation">
             <div id="explanator-benefits"></div>
             <div class="slider">
@@ -301,6 +321,20 @@
         <div id="cta-container"></div>
         <div id="footer-container"></div>
         <div id="navbar-container"></div>
+        <style>
+            #navbar .navbar-menu {
+                filter: invert(0);
+                color: black;
+            }
+            #navbar .logo,
+            #mobile-nav .logo {
+                filter: grayscale(0) brightness(1);
+            }
+            #navbar .icon-menu,
+            #mobile-nav .icon-menu {
+                filter: (0);
+            }
+        </style>
 
         <script>
             // Fungsi sederhana untuk menyisipkan HTML

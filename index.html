@@ -44,6 +44,7 @@
                     color: white;
                     cursor: pointer;
                     width: 100svw;
+                    transition: background 0.6s linear;
                 }
                 #imda-logo {
                     height: 40px;
@@ -73,6 +74,19 @@
                     border: 1px solid white;
                     border-radius: 100px;
                     cursor: pointer;
+                }
+                #quickwin-banner:hover {
+                    background: radial-gradient(90.67% 475.63% at 90.67% 50%,
+                        #003357 0%,
+                        #10947c 100%
+                    );
+                }
+                #quickwin-banner:hover .quickwin-button {
+                    background-color: white;
+                    color: #003357;
+                }
+                #quickwin-banner:hover .quickwin-button img {
+                    filter: invert(0%);
                 }
                 .quickwin-button img {
                     filter: invert(100%);
@@ -327,8 +341,7 @@
                 }
 
                 #chat-hero {
-                    background: url(lines.jpg) center center;
-                    background-size: 100% 100%;
+                    background: white;
                     width: 100%;
                     aspect-ratio: 1/1;
                     overflow: hidden;
@@ -337,6 +350,7 @@
                     align-items: flex-end;
                     position: relative;
                     z-index: -10;
+                    padding-top: 50px;
                 }
 
                 .scaled-frame {
